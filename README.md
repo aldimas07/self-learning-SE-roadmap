@@ -19,7 +19,7 @@ Most self-taught developers fall into one of three traps:
 
 This repository provides a structural cure to these problems using two core components:
 
-### 1. The Hard-Gate Roadmap (`roadmap.html`)
+### 1. The Hard-Gate Roadmap (`index.html`)
 An interactive, cyberpunk-inspired tracking dashboard that acts as your curriculum. 
 - **The "Hard Gate" Mechanic:** You *cannot* progress to the next topic until you pass a strict practical checklist (≥80%) and a comprehensive quiz (≥67%). No cheating. No skipping.
 - **Phase 1 to 4:** Structured incrementally. Phase 1 forces you to focus purely on Computational Thinking and Data Structures. It actively explicitly lists what technologies to *ignore* so you stay focused.
@@ -34,12 +34,12 @@ The actual daily engine of *how* you study. It uses a strict 3-Layer time-boxed 
 
 ## ⚙️ How to Maximize & Combine the Systems
 
-The magic happens when you use `roadmap.html` as your **Map**, and `self-learning-system.md` as your **Vehicle**.
+The magic happens when you use `index.html` as your **Map**, and `self-learning-system.md` as your **Vehicle**.
 
 Here is your daily workflow:
 
 ### Step 1: Pick the Target (from the Roadmap)
-Open `roadmap.html`. Find the current unlocked topic (e.g., *Phase 1, Topic 2: Functions, Scope & Closures*). Read the overarching goal and the subtopics required.
+Open `index.html`. Find the current unlocked topic (e.g., *Phase 1, Topic 2: Functions, Scope & Closures*). Read the overarching goal and the subtopics required.
 
 ### Step 2: Execute the 3-Layer Loop (from the System)
 1. **Pre-Study Prompt:** Ask Claude to give you the mental model for "Closures".
@@ -51,7 +51,7 @@ Open `roadmap.html`. Find the current unlocked topic (e.g., *Phase 1, Topic 2: F
 Tell Claude: *"I claim I understand Functions and Closures. Grill me with 5 Socratic questions."* 
 
 ### Step 4: Unlock the Gate (Back to the Roadmap)
-Once Claude passes your code review and you survive the Socratic grilling, return to `roadmap.html`.
+Once Claude passes your code review and you survive the Socratic grilling, return to `index.html`.
 - Honestly tick off the practical checklist.
 - Take the built-in Quiz.
 - If you pass, the next node unlocks. Celebrate, rest, and repeat.
@@ -61,7 +61,7 @@ Once Claude passes your code review and you survive the Socratic grilling, retur
 ## 🚦 Quick Start
 
 1. Clone or download this repository.
-2. Open `roadmap.html` in your favorite web browser (no server required).
+2. Open `index.html` in your favorite web browser (no server required).
 3. Read `self-learning-system.md` and copy the provided AI Prompt Templates into your notes app.
 4. Begin Phase 1, Topic 1.
 
