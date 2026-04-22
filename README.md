@@ -4,6 +4,8 @@
 
 **A gamified, brutally honest roadmap and AI-assisted learning system designed to take you from absolute beginner to xx Engineer over 3-5 years.**
 
+[**🌐 VIEW LIVE INTERACTIVE ROADMAP**](https://aldimas07.github.io/self-learning-SE-roadmap/)
+
 </div>
 
 ---
