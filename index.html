@@ -4,258 +4,747 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>0 → Staff Engineer Roadmap v2</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #080808;
-  --s1: #111;
-  --s2: #181818;
-  --s3: #222;
-  --border: #2a2a2a;
-  --border2: #333;
-  --text: #f0f0f0;
-  --muted: #555;
-  --muted2: #777;
-  --accent: #e8ff00;
-  --accent2: #ff6b35;
-  --accent3: #00d4ff;
-  --success: #00ff88;
-  --danger: #ff4444;
-  --warn: #ffaa00;
-  --p1: #e8ff00;
-  --p2: #ff6b35;
-  --p3: #00d4ff;
-  --p4: #ff3cac;
-  --locked: #333;
+  --bg: #0b0c10;
+  --s1: rgba(255, 255, 255, 0.015);
+  --s2: rgba(255, 255, 255, 0.025);
+  --s3: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.05);
+  --border2: rgba(255, 255, 255, 0.12);
+  --text: #f8fafc;
+  --muted: #64748b;
+  --muted2: #94a3b8;
+  --accent: #e2ff33;
+  --accent2: #ff7a45;
+  --accent3: #00f0ff;
+  --success: #00f59b;
+  --danger: #ff4b6b;
+  --warn: #ffb800;
+  --p1: #e2ff33;
+  --p2: #ff7a45;
+  --p3: #00f0ff;
+  --p4: #ff38b0;
+  --locked: #1e293b;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;overflow-x:hidden}
+body{
+  background: radial-gradient(circle at 50% 0%, #161a29 0%, #08090c 100%) no-repeat fixed;
+  color:var(--text);
+  font-family:var(--font-sans);
+  min-height:100vh;
+  overflow-x:hidden;
+  line-height: 1.5;
+}
 
 /* ── HERO ── */
-.hero{padding:52px 24px 36px;max-width:960px;margin:0 auto}
-.tag{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:5px 12px;margin-bottom:22px}
-.tag-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:blink 1.4s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-h1{font-size:clamp(34px,6vw,62px);font-weight:800;line-height:1.04;letter-spacing:-1.5px;margin-bottom:14px}
-h1 em{font-style:normal;color:var(--accent)}
+.hero{padding:60px 24px 40px;max-width:960px;margin:0 auto;text-align: left;}
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--accent);
+  background: rgba(226, 255, 51, 0.05);
+  border: 1px solid rgba(226, 255, 51, 0.2);
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+  box-shadow: 0 0 20px rgba(226, 255, 51, 0.05);
+}
+.tag-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:blink 1.4s infinite;box-shadow: 0 0 8px var(--accent);}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+h1{
+  font-size:clamp(38px,7vw,64px);
+  font-weight:800;
+  line-height:1.05;
+  letter-spacing:-2px;
+  margin-bottom: 18px;
+  background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h1 em{
+  font-style:normal;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(226, 255, 51, 0.15);
+}
 .hero-meta{display:flex;gap:24px;flex-wrap:wrap}
-.hero-meta span{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted2);letter-spacing:1px}
+.hero-meta span{font-family:var(--font-mono);font-size:11px;color:var(--muted2);letter-spacing:0.5px}
 .hero-meta strong{color:var(--accent2)}
 
 /* ── STATS ── */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;max-width:960px;margin:0 auto 32px;padding:0 24px}
-.stat{background:var(--s1);border:1px solid var(--border);padding:18px 16px}
-.stat-v{font-size:30px;font-weight:800;display:block;color:var(--accent);line-height:1}
-.stat-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:5px;display:block}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;max-width:960px;margin:0 auto 36px;padding:0 24px}
+.stat{
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border:1px solid var(--border);
+  padding:22px 20px;
+  border-radius:14px;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.stat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+}
+.stat:hover{
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+.stat-v{font-size:36px;font-weight:800;display:block;color:var(--accent);line-height:1;text-shadow: 0 0 20px rgba(226, 255, 51, 0.15);}
+.stat-l{font-family:var(--font-mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);margin-top:8px;display:block}
 
 /* ── OVERALL PROGRESS ── */
-.op{max-width:960px;margin:0 auto 32px;padding:0 24px}
-.op-row{display:flex;justify-content:space-between;margin-bottom:8px}
-.op-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
-.op-pct{font-size:14px;font-weight:800;color:var(--accent)}
-.op-track{height:4px;background:var(--s3);position:relative;overflow:hidden}
-.op-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .7s cubic-bezier(.4,0,.2,1)}
+.op{max-width:960px;margin:0 auto 40px;padding:0 24px}
+.op-row{display:flex;justify-content:space-between;margin-bottom:10px;align-items:flex-end}
+.op-label{font-family:var(--font-mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2)}
+.op-pct{font-size:16px;font-weight:800;color:var(--accent);text-shadow: 0 0 10px rgba(226, 255, 51, 0.2);}
+.op-track{height:8px;background:rgba(255, 255, 255, 0.03);border: 1px solid rgba(255, 255, 255, 0.05);border-radius:100px;position:relative;overflow:hidden}
+.op-fill{
+  height:100%;
+  border-radius:100px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));
+  background-size: 200% 100%;
+  animation: gradientShift 6s linear infinite;
+  transition:width .8s cubic-bezier(.4,0,.2,1);
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 /* ── TABS ── */
-.tabs{max-width:960px;margin:0 auto;padding:0 24px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--border)}
+.tabs{
+  max-width:960px;
+  margin:0 auto 12px;
+  padding:6px;
+  display:flex;
+  gap:4px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex-shrink:0;padding:10px 18px 11px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;background:transparent;border:none;border-bottom:2px solid transparent;color:var(--muted);cursor:pointer;transition:all .2s;margin-bottom:-1px}
-.tab:hover{color:var(--text)}
-.tab.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:700}
-.tab[data-p="2"].active{color:var(--p2);border-bottom-color:var(--p2)}
-.tab[data-p="3"].active{color:var(--p3);border-bottom-color:var(--p3)}
-.tab[data-p="4"].active{color:var(--p4);border-bottom-color:var(--p4)}
+.tab{
+  flex-shrink:0;
+  padding:12px 20px;
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  background:transparent;
+  border:none;
+  border-radius: 12px;
+  color:var(--muted2);
+  cursor:pointer;
+  transition:all .25s cubic-bezier(0.4,0,0.2,1);
+}
+.tab:hover{color:var(--text);background: rgba(255, 255, 255, 0.035);}
+.tab.active{color:#000 !important;background:var(--accent);font-weight:700;box-shadow: 0 4px 14px rgba(226, 255, 51, 0.25);}
+.tab[data-p="2"].active{background:var(--p2);box-shadow: 0 4px 14px rgba(255, 122, 69, 0.25);}
+.tab[data-p="3"].active{background:var(--p3);box-shadow: 0 4px 14px rgba(0, 240, 255, 0.25);}
+.tab[data-p="4"].active{background:var(--p4);box-shadow: 0 4px 14px rgba(255, 56, 176, 0.25);}
 
 /* ── PANEL ── */
-.panel{max-width:960px;margin:0 auto;padding:28px 24px;display:none}
-.panel.active{display:block;animation:fadeUp .3s ease}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.panel{max-width:960px;margin:0 auto;padding:32px 24px;display:none}
+.panel.active{display:block;animation:fadeUp .4s cubic-bezier(0.16, 1, 0.3, 1)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}}
 
 /* ── SECTION TITLE ── */
-.sec{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.sec::after{content:'';flex:1;height:1px;background:var(--border)}
+.sec{font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);margin:36px 0 16px;display:flex;align-items:center;gap:12px}
+.sec::after{content:'';flex:1;height:1px;background:linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent)}
 
 /* ── PHASE HEADER ── */
-.ph{display:flex;align-items:flex-start;gap:20px;background:var(--s1);border:1px solid var(--border);padding:24px;margin-bottom:24px}
-.ph-num{font-family:'Space Mono',monospace;font-size:72px;font-weight:700;line-height:1;opacity:.08;flex-shrink:0}
+.ph{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:28px;
+  margin-bottom:28px;
+  position: relative;
+  overflow: hidden;
+}
+.ph-num{font-family:var(--font-mono);font-size:64px;font-weight:700;line-height:1;opacity:.04;flex-shrink:0;user-select:none}
 .ph-info{flex:1}
-.ph-badge{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:3px 9px;margin-bottom:8px}
-.ph-title{font-size:22px;font-weight:800;margin-bottom:5px;letter-spacing:-.5px}
-.ph-sub{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted2)}
+.ph-badge{
+  display:inline-block;
+  font-family:var(--font-mono);
+  font-size:9px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:4px 10px;
+  border-radius: 6px;
+  margin-bottom:12px;
+}
+.ph-title{font-size:24px;font-weight:800;margin-bottom:6px;letter-spacing:-.5px}
+.ph-sub{font-family:var(--font-mono);font-size:11px;color:var(--muted2)}
 .ph-pct-wrap{text-align:right;flex-shrink:0}
-.ph-pct{font-size:40px;font-weight:800;line-height:1;display:block}
-.ph-pct-l{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+.ph-pct{font-size:44px;font-weight:800;line-height:1;display:block}
+.ph-pct-l{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-top: 4px;}
 
 /* ── TOPIC LIST ── */
-.topic-list{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.topic-list{display:flex;flex-direction:column;gap:14px;margin-bottom:36px}
 
 /* ── TOPIC CARD ── */
-.tc{background:var(--s1);border:1px solid var(--border);transition:border-color .2s}
+.tc{
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius:16px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow:hidden;
+}
 .tc.unlocked{cursor:default}
-.tc.locked{opacity:.45;cursor:not-allowed}
+.tc.unlocked:hover{
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+}
+.tc.locked{opacity:.35;cursor:not-allowed}
 .tc.locked .tc-head{cursor:not-allowed}
-.tc.passed{border-color:var(--success)}
-.tc.failed-state{border-color:var(--danger)}
+.tc.passed{border-color: rgba(0, 255, 136, 0.25);background: rgba(0, 255, 136, 0.01);}
+.tc.passed:hover{border-color: rgba(0, 255, 136, 0.4);box-shadow: 0 8px 28px rgba(0, 255, 136, 0.06);}
+.tc.failed-state{border-color: rgba(255, 68, 68, 0.25);background: rgba(255, 68, 68, 0.01);}
+.tc.failed-state:hover{border-color: rgba(255, 68, 68, 0.4);box-shadow: 0 8px 28px rgba(255, 68, 68, 0.06);}
 
-.tc-head{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;user-select:none}
-.tc-head:hover .tc-name{opacity:.85}
+.tc-head{display:flex;align-items:center;gap:18px;padding:20px 24px;cursor:pointer;user-select:none}
+.tc-head:hover .tc-name{color:#fff}
 
-.tc-status{width:26px;height:26px;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700;transition:all .2s}
-.tc.passed .tc-status{background:var(--success);border-color:var(--success);color:#000}
-.tc.locked .tc-status{background:var(--s3);border-color:var(--border);color:var(--muted)}
-.tc.failed-state .tc-status{border-color:var(--danger);color:var(--danger)}
+.tc-status{
+  width:32px;
+  height:32px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  font-size:13px;
+  font-weight:700;
+  transition:all .25s ease;
+  background: rgba(255, 255, 255, 0.02);
+}
+.tc.passed .tc-status{background:var(--success);border-color:var(--success);color:#000;box-shadow: 0 0 12px rgba(0, 255, 136, 0.35);}
+.tc.locked .tc-status{background:rgba(255,255,255,0.01);border-color:rgba(255,255,255,0.03);color:var(--muted)}
+.tc.failed-state .tc-status{background:rgba(255, 68, 68, 0.1);border-color:var(--danger);color:var(--danger);box-shadow: 0 0 12px rgba(255, 68, 68, 0.25);}
 
 .tc-info{flex:1}
-.tc-number{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:2px;margin-bottom:3px}
-.tc-name{font-size:14px;font-weight:700;line-height:1.3}
-.tc-why{font-size:11px;color:var(--muted2);margin-top:3px;line-height:1.5}
+.tc-number{font-family:var(--font-mono);font-size:9px;color:var(--muted2);letter-spacing:2px;margin-bottom:5px}
+.tc-name{font-size:16px;font-weight:700;line-height:1.3;transition:color 0.2s}
+.tc-why{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.5}
 
-.tc-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.tc-score-badge{font-family:'Space Mono',monospace;font-size:10px;padding:3px 8px;border:1px solid;display:none}
-.tc.passed .tc-score-badge{display:block;border-color:var(--success);color:var(--success);background:rgba(0,255,136,.08)}
-.tc.failed-state .tc-score-badge{display:block;border-color:var(--danger);color:var(--danger);background:rgba(255,68,68,.08)}
-.tc-lock-icon{font-size:13px;color:var(--muted)}
-.tc-chevron{font-size:10px;color:var(--muted);transition:transform .25s;font-family:'Space Mono',monospace}
+.tc-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.tc-score-badge{
+  font-family:var(--font-mono);
+  font-size:10px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:6px;
+  border:1px solid;
+  display:none;
+}
+.tc.passed .tc-score-badge{display:block;border-color:rgba(0,255,136,.3);color:var(--success);background:rgba(0,255,136,.06)}
+.tc.failed-state .tc-score-badge{display:block;border-color:rgba(255,68,68,.3);color:var(--danger);background:rgba(255,68,68,.06)}
+.tc-lock-icon{font-size:14px;color:var(--muted)}
+.tc-chevron{font-size:11px;color:var(--muted2);transition:transform .3s cubic-bezier(0.4, 0, 0.2, 1);font-family:var(--font-mono)}
 .tc.open .tc-chevron{transform:rotate(180deg)}
 
 /* ── TOPIC BODY ── */
-.tc-body{display:none;border-top:1px solid var(--border);padding:20px 18px}
-.tc.open .tc-body{display:block}
+.tc-body{
+  display:none;
+  border-top:1px solid rgba(255, 255, 255, 0.05);
+  padding:24px;
+  background: rgba(0, 0, 0, 0.15);
+}
+.tc.open .tc-body{
+  display:block;
+  animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* SUBTOPICS */
-.subtopics{margin-bottom:22px}
-.sub-item{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.subtopics{
+  margin-bottom:28px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 8px 20px;
+}
+.sub-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.04);align-items:flex-start}
 .sub-item:last-child{border-bottom:none}
-.sub-dot{width:5px;height:5px;background:var(--muted);border-radius:50%;flex-shrink:0;margin-top:7px}
-.sub-text{font-size:12px;line-height:1.6;color:#ccc}
-.sub-goal{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted2);margin-top:3px}
+.sub-dot{width:6px;height:6px;background:var(--muted2);border-radius:50%;flex-shrink:0;margin-top:7px}
+.sub-text{font-size:13px;line-height:1.5;color:#e2e8f0}
+.sub-goal{font-family:var(--font-mono);font-size:10px;color:var(--muted2);margin-top:4px}
 
 /* CHECKLIST */
-.checklist-wrap{margin-bottom:22px}
-.cl-title{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.cl-item{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--s2);margin-bottom:6px;cursor:pointer;transition:background .15s;border:1px solid transparent}
-.cl-item:hover{background:var(--s3)}
-.cl-item.checked{background:rgba(0,255,136,.05);border-color:rgba(0,255,136,.2)}
-.cl-box{width:16px;height:16px;border:1.5px solid var(--border2);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:10px;transition:all .15s}
-.cl-item.checked .cl-box{background:var(--success);border-color:var(--success);color:#000}
-.cl-text{font-size:12px;line-height:1.5;color:#ccc}
+.checklist-wrap{margin-bottom:28px}
+.cl-title{
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted2);
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.cl-item{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  padding:12px 16px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  margin-bottom:8px;
+  cursor:pointer;
+  transition:all 0.2s ease;
+}
+.cl-item:hover{background:rgba(255, 255, 255, 0.035);border-color: rgba(255, 255, 255, 0.08);}
+.cl-item.checked{background:rgba(0,255,136,.03);border-color:rgba(0,255,136,.15)}
+.cl-box{
+  width:18px;
+  height:18px;
+  border-radius:5px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  flex-shrink:0;
+  margin-top:1px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:bold;
+  transition:all .2s ease;
+}
+.cl-item.checked .cl-box{background:var(--success);border-color:var(--success);color:#000;box-shadow: 0 0 8px rgba(0,255,136,.25);}
+.cl-text{font-size:13px;line-height:1.5;color:#cbd5e1;transition:all 0.2s ease}
 .cl-item.checked .cl-text{color:var(--muted);text-decoration:line-through}
-.cl-bar-wrap{margin-top:10px}
-.cl-bar-label{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);margin-bottom:5px;display:flex;justify-content:space-between}
-.cl-bar-track{height:3px;background:var(--s3)}
-.cl-bar-fill{height:100%;background:var(--success);transition:width .4s}
+.cl-bar-wrap{margin-top:14px}
+.cl-bar-label{font-family:var(--font-mono);font-size:10px;color:var(--muted2);margin-bottom:6px;display:flex;justify-content:space-between}
+.cl-bar-track{height:4px;background:rgba(255, 255, 255, 0.03);border-radius:100px;overflow:hidden}
+.cl-bar-fill{height:100%;background:var(--success);box-shadow: 0 0 8px rgba(0, 255, 136, 0.3);transition:width .4s cubic-bezier(0.4, 0, 0.2, 1)}
 
 /* QUIZ */
-.quiz-wrap{background:var(--s2);border:1px solid var(--border);padding:18px}
-.quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.quiz-title{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted2)}
-.quiz-count{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted)}
+.quiz-wrap{
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  padding:24px;
+}
+.quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;border-bottom: 1px solid rgba(255, 255, 255, 0.04);padding-bottom:12px}
+.quiz-title{font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted2)}
+.quiz-count{font-family:var(--font-mono);font-size:10px;color:var(--muted)}
 
-.q-item{margin-bottom:18px}
+.q-item{margin-bottom:24px}
 .q-item:last-child{margin-bottom:0}
-.q-text{font-size:13px;font-weight:600;line-height:1.6;margin-bottom:10px;color:var(--text)}
-.q-num{color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;margin-bottom:5px}
-.q-options{display:flex;flex-direction:column;gap:6px}
-.q-opt{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;background:var(--bg);border:1px solid var(--border);cursor:pointer;transition:all .2s;font-size:12px;line-height:1.5;color:#ccc}
-.q-opt:hover:not(.disabled){border-color:var(--border2);background:var(--s3)}
-.q-opt.selected{border-color:var(--accent3);color:var(--accent3);background:rgba(0,212,255,.05)}
-.q-opt.correct{border-color:var(--success);color:var(--success);background:rgba(0,255,136,.07)}
-.q-opt.wrong{border-color:var(--danger);color:var(--danger);background:rgba(255,68,68,.07)}
+.q-text{font-size:14px;font-weight:600;line-height:1.6;margin-bottom:12px;color:#f8fafc}
+.q-num{color:var(--muted);font-family:var(--font-mono);font-size:10px;margin-bottom:6px;letter-spacing:1px}
+.q-options{display:flex;flex-direction:column;gap:8px}
+.q-opt{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:12px 16px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  cursor:pointer;
+  transition:all .2s ease;
+  font-size:13px;
+  line-height:1.5;
+  color:#cbd5e1;
+}
+.q-opt:hover:not(.disabled){border-color:rgba(255,255,255,0.1);background:rgba(255,255,255,0.03)}
+.q-opt.selected{border-color:var(--accent3);color:var(--accent3);background:rgba(0, 212, 255, 0.04);box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);}
+.q-opt.correct{border-color:var(--success);color:var(--success);background:rgba(0, 255, 136, 0.05);box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);}
+.q-opt.wrong{border-color:var(--danger);color:var(--danger);background:rgba(255, 68, 68, 0.05);box-shadow: 0 0 10px rgba(255, 68, 68, 0.1);}
 .q-opt.disabled{cursor:default}
-.q-opt-key{font-family:'Space Mono',monospace;font-size:10px;width:18px;flex-shrink:0;margin-top:1px;font-weight:700}
-.q-explain{font-size:11px;color:var(--muted2);margin-top:8px;padding:8px 12px;background:var(--bg);border-left:2px solid var(--border2);line-height:1.6;display:none}
-.q-explain.show{display:block}
+.q-opt-key{font-family:var(--font-mono);font-size:11px;width:20px;flex-shrink:0;margin-top:1px;font-weight:700}
+.q-explain{
+  font-size:12px;
+  color:var(--muted2);
+  margin-top:10px;
+  padding:10px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 8px 8px 0;
+  line-height:1.6;
+  display:none;
+}
+.q-explain.show{display:block;animation: fadeIn 0.3s ease;}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
 /* QUIZ RESULT */
-.quiz-result{display:none;margin-top:16px;padding:14px 16px;border:1px solid;text-align:center}
+.quiz-result{display:none;margin-top:20px;padding:18px;border-radius:10px;border:1px solid;text-align:center}
 .quiz-result.show{display:block}
-.quiz-result.pass{border-color:var(--success);background:rgba(0,255,136,.06)}
-.quiz-result.fail{border-color:var(--danger);background:rgba(255,68,68,.06)}
-.qr-score{font-size:28px;font-weight:800;display:block;margin-bottom:4px}
-.qr-msg{font-size:12px;color:var(--muted2);margin-bottom:12px}
-.qr-btn{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;cursor:pointer;border:1px solid;background:transparent;color:inherit;transition:all .2s}
-.qr-btn:hover{opacity:.8}
+.quiz-result.pass{border-color:rgba(0,255,136,.3);background:rgba(0,255,136,.04)}
+.quiz-result.fail{border-color:rgba(255,68,68,.3);background:rgba(255,68,68,.04)}
+.qr-score{font-size:32px;font-weight:800;display:block;margin-bottom:6px}
+.qr-msg{font-size:13px;color:var(--muted2);margin-bottom:14px}
+.qr-btn{
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:10px 24px;
+  border-radius: 8px;
+  cursor:pointer;
+  border:1px solid;
+  background:transparent;
+  color:inherit;
+  transition:all .2s;
+}
+.qr-btn:hover{background:rgba(255,255,255,0.05)}
 
 /* GATE BANNER */
-.gate-banner{display:none;margin-top:16px;padding:12px 16px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;background:rgba(255,68,68,.08);border:1px solid rgba(255,68,68,.3);color:#ff8080;line-height:1.6}
+.gate-banner{
+  display:none;
+  margin-top:20px;
+  padding:14px 18px;
+  border-radius:8px;
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:1px;
+  background:rgba(255,68,68,.04);
+  border:1px solid rgba(255,68,68,.2);
+  color:#ff8080;
+  line-height:1.6;
+}
 .gate-banner.show{display:block}
 
 /* PASS BANNER */
-.pass-banner{display:none;margin-top:16px;padding:12px 16px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.3);color:var(--success);line-height:1.6}
+.pass-banner{
+  display:none;
+  margin-top:20px;
+  padding:14px 18px;
+  border-radius:8px;
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:1px;
+  background:rgba(0,255,136,.04);
+  border:1px solid rgba(0,255,136,.2);
+  color:var(--success);
+  line-height:1.6;
+}
 .pass-banner.show{display:block}
 
 /* SUBMIT BTN */
-.submit-area{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
-.btn-submit{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:10px 22px;border:1px solid var(--accent3);color:var(--accent3);background:transparent;cursor:pointer;transition:all .2s}
-.btn-submit:hover{background:rgba(0,212,255,.1)}
-.btn-submit:disabled{opacity:.3;cursor:not-allowed}
-.btn-retry{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:10px 22px;border:1px solid var(--muted);color:var(--muted);background:transparent;cursor:pointer;transition:all .2s;display:none}
-.btn-retry:hover{border-color:var(--text);color:var(--text)}
-.pass-req{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:1px}
+.submit-area{display:flex;align-items:center;gap:16px;margin-top:20px;flex-wrap:wrap}
+.btn-submit{
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:12px 24px;
+  border-radius: 8px;
+  border:1px solid var(--accent3);
+  color:var(--accent3);
+  background:transparent;
+  cursor:pointer;
+  transition:all 0.25s ease;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.05);
+}
+.btn-submit:hover:not(:disabled){
+  background:var(--accent3);
+  color:#000;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.25);
+}
+.btn-submit:disabled{opacity:.25;cursor:not-allowed;border-color:var(--muted);color:var(--muted)}
+.btn-retry{
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:12px 24px;
+  border-radius: 8px;
+  border:1px solid var(--muted);
+  color:var(--muted2);
+  background:transparent;
+  cursor:pointer;
+  transition:all 0.25s ease;
+  display:none;
+}
+.btn-retry:hover{border-color:var(--text);color:var(--text);background: rgba(255, 255, 255, 0.03);}
+.pass-req{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:1px}
 
 /* OVERVIEW */
-.ov-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.ov-item{display:flex;align-items:center;gap:16px;background:var(--s1);border:1px solid var(--border);padding:16px 20px;cursor:pointer;transition:border-color .2s}
-.ov-item:hover{border-color:var(--border2)}
-.ov-ph-num{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;width:56px;flex-shrink:0}
+.ov-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.ov-item{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  background: rgba(255, 255, 255, 0.01);
+  border:1px solid var(--border);
+  border-radius: 14px;
+  padding:20px 24px;
+  cursor:pointer;
+  transition:all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.ov-item:hover{
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+.ov-ph-num{font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:2px;width:60px;flex-shrink:0}
 .ov-ph-info{flex:1}
-.ov-ph-name{font-size:15px;font-weight:700;margin-bottom:2px}
-.ov-ph-dur{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted)}
-.ov-ph-bar{width:90px;flex-shrink:0}
-.ov-ph-track{height:3px;background:var(--s3)}
-.ov-ph-fill{height:100%;transition:width .6s}
-.ov-ph-pct{font-family:'Space Mono',monospace;font-size:9px;margin-top:4px;text-align:right}
+.ov-ph-name{font-size:16px;font-weight:700;margin-bottom:4px}
+.ov-ph-dur{font-family:var(--font-mono);font-size:10px;color:var(--muted2)}
+.ov-ph-bar{width:100px;flex-shrink:0}
+.ov-ph-track{height:4px;background:rgba(255, 255, 255, 0.03);border-radius:100px;overflow:hidden}
+.ov-ph-fill{height:100%;border-radius:100px;transition:width .8s cubic-bezier(.4, 0, .2, 1)}
+.ov-ph-pct{font-family:var(--font-mono);font-size:10px;margin-top:6px;text-align:right}
 
 /* TRUTH */
-.truth{background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--accent2);padding:20px 24px;margin-bottom:24px}
-.truth-t{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent2);margin-bottom:12px}
-.truth p{font-size:13px;line-height:1.8;color:#bbb;margin-bottom:8px}
+.truth{
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border:1px solid var(--border);
+  border-left:4px solid var(--accent2);
+  border-radius: 0 12px 12px 0;
+  padding:22px 24px;
+  margin-bottom:28px;
+}
+.truth-t{font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent2);margin-bottom:12px;font-weight:700}
+.truth p{font-size:13px;line-height:1.8;color:#cbd5e1;margin-bottom:10px}
 .truth p:last-child{margin-bottom:0}
-.truth strong{color:var(--text)}
+.truth strong{color:#fff}
 
 /* WEEKLY SCHEDULE */
-.sched{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:28px}
-.day{background:var(--s1);border:1px solid var(--border);padding:12px 6px;text-align:center}
-.day-n{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px}
-.day-b{display:block;font-size:9px;padding:5px 3px;margin-bottom:4px;line-height:1.3;font-weight:700;color:#000}
-.day-rest{font-size:20px;margin-top:4px}
+.sched{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:32px}
+.day{
+  background: rgba(255, 255, 255, 0.01);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:14px 8px;
+  text-align:center;
+  transition:all 0.2s ease;
+}
+.day:hover {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.day-n{font-family:var(--font-mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted2);display:block;margin-bottom:12px}
+.day-b{display:block;font-size:9px;padding:6px 4px;border-radius:6px;margin-bottom:6px;line-height:1.3;font-weight:700;color:#000}
+.day-rest{font-size:22px;margin-top:6px}
 
 /* MODELS */
-.models{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:28px}
-.model{background:var(--s1);border:1px solid var(--border);padding:16px}
-.model-t{font-weight:700;font-size:13px;margin-bottom:6px}
-.model-d{font-size:11px;color:var(--muted2);line-height:1.6}
+.models{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:32px}
+.model{
+  background: rgba(255, 255, 255, 0.015);
+  border:1px solid var(--border);
+  border-radius: 10px;
+  padding:18px;
+  transition:all 0.2s ease;
+}
+.model:hover{background:rgba(255, 255, 255, 0.035);border-color: rgba(255, 255, 255, 0.08);}
+.model-t{font-weight:700;font-size:14px;margin-bottom:8px}
+.model-d{font-size:12px;color:var(--muted2);line-height:1.6}
 
 /* IGNORE */
-.ignore-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin-bottom:28px}
-.ignore-i{padding:10px 12px;background:rgba(255,60,60,.05);border:1px solid rgba(255,60,60,.18);font-size:12px;color:#ff7070;display:flex;align-items:center;gap:8px}
+.ignore-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px;margin-bottom:32px}
+.ignore-i{
+  padding:12px 14px;
+  border-radius:8px;
+  background:rgba(255,60,60,.02);
+  border:1px solid rgba(255,60,60,.12);
+  font-size:12px;
+  color:#ff8080;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  transition: all 0.2s ease;
+}
+.ignore-i:hover {
+  background: rgba(255, 60, 60, 0.04);
+  border-color: rgba(255, 60, 60, 0.2);
+}
 
 /* METRICS */
-.met-list{display:flex;flex-direction:column;gap:6px;margin-bottom:28px}
-.met-item{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--s1);border:1px solid var(--border);cursor:pointer;transition:all .2s}
-.met-item.hit{border-color:var(--success);background:rgba(0,255,136,.04)}
-.met-box{width:18px;height:18px;border:1.5px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;transition:all .2s}
-.met-item.hit .met-box{background:var(--success);border-color:var(--success);color:#000}
-.met-text{font-size:13px;line-height:1.4}
-.met-item.hit .met-text{text-decoration:line-through;opacity:.5}
+.met-list{display:flex;flex-direction:column;gap:8px;margin-bottom:32px}
+.met-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 18px;
+  background: rgba(255, 255, 255, 0.01);
+  border:1px solid var(--border);
+  border-radius: 10px;
+  cursor:pointer;
+  transition:all 0.2s ease;
+}
+.met-item:hover{background:rgba(255, 255, 255, 0.02);border-color: rgba(255, 255, 255, 0.08);}
+.met-item.hit{border-color:rgba(0,255,136,.2);background:rgba(0,255,136,.02)}
+.met-box{
+  width:20px;
+  height:20px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:bold;
+  transition:all .2s ease;
+}
+.met-item.hit .met-box{background:var(--success);border-color:var(--success);color:#000;box-shadow: 0 0 8px rgba(0,255,136,.25);}
+.met-text{font-size:13px;line-height:1.4;color:#e2e8f0}
+.met-item.hit .met-text{text-decoration:line-through;opacity:.4}
+
+/* PROMPT CENTER */
+.prompt-center { margin-bottom: 28px; }
+.prompt-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+.prompt-btn {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  background: rgba(0, 240, 255, 0.04);
+  color: var(--accent3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.prompt-btn:hover {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.15);
+}
+
+/* RESOURCE LINK */
+.resource-link {
+  margin-bottom: 20px;
+  padding: 10px 16px;
+  background: rgba(226, 255, 51, 0.03);
+  border: 1px solid rgba(226, 255, 51, 0.1);
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--muted2);
+}
+.resource-link a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.resource-link a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* DATA ACTIONS */
+.data-actions {
+  max-width:960px;
+  margin:0 auto 20px;
+  padding:0 24px;
+  display:flex;
+  gap:8px;
+  justify-content:flex-end;
+}
 
 /* SCROLL TOP */
-#sTop{position:fixed;bottom:24px;right:24px;width:38px;height:38px;background:var(--accent);color:#000;border:none;cursor:pointer;font-size:14px;font-weight:700;opacity:0;transition:opacity .3s;z-index:99}
+#sTop{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  width:44px;
+  height:44px;
+  border-radius: 10px;
+  background:var(--accent);
+  color:#000;
+  border:none;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:700;
+  opacity:0;
+  box-shadow: 0 4px 15px rgba(226, 255, 51, 0.3);
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index:99;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+#sTop:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(226, 255, 51, 0.45);
+}
 #sTop.vis{opacity:1}
 
 /* TOAST */
-.toast{position:fixed;bottom:70px;right:24px;background:var(--s1);border:1px solid var(--success);color:var(--success);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;padding:10px 18px;z-index:200;opacity:0;transform:translateY(8px);transition:all .3s;pointer-events:none}
+.toast{
+  position:fixed;
+  bottom:84px;
+  right:24px;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border:1px solid var(--success);
+  border-radius: 8px;
+  color:var(--success);
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:1px;
+  padding:12px 20px;
+  z-index:200;
+  opacity:0;
+  transform:translateY(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events:none;
+}
 .toast.vis{opacity:1;transform:translateY(0)}
 .toast.fail-toast{border-color:var(--danger);color:var(--danger)}
 
-/* MOBILE */
-@media(max-width:600px){
+/* MOBILE RESPONSIVENESS */
+@media(max-width:768px){
   .sched{grid-template-columns:repeat(4,1fr)}
   .ph-num{display:none}
-  .ph{flex-wrap:wrap}
-  h1{font-size:32px}
-  .stats{grid-template-columns:repeat(2,1fr)}
+  .ph{flex-wrap:wrap; gap:16px; padding:20px}
+  h1{font-size:34px}
+  .stats{grid-template-columns:repeat(2,1fr); gap:12px}
+  .tab { padding: 10px 14px; font-size: 9px; }
+  .tc-head { padding: 16px; }
+  .prompt-buttons { flex-direction: column; }
+}
+@media(max-width:480px){
+  .sched{grid-template-columns:repeat(2,1fr)}
+  .tabs{flex-wrap: nowrap; overflow-x: auto;}
+  .ph-pct-wrap { text-align: left; margin-top: 8px; width: 100%; }
 }
 </style>
 </head>
@@ -280,6 +769,15 @@ h1 em{font-style:normal;color:var(--accent)}
   <div class="stat"><span class="stat-v" id="sPhase">—</span><span class="stat-l">Current Phase</span></div>
 </div>
 
+<!-- DATA ACTIONS -->
+<div class="data-actions">
+  <button class="prompt-btn" onclick="exportProgress()">↓ Export Progress</button>
+  <label class="prompt-btn" style="cursor:pointer">
+    ↑ Import Progress
+    <input type="file" accept=".json" onchange="importProgress(event)" style="display:none">
+  </label>
+</div>
+
 <!-- OVERALL -->
 <div class="op">
   <div class="op-row"><span class="op-label">Overall Progress</span><span class="op-pct" id="opPct">0%</span></div>
@@ -299,7 +797,7 @@ h1 em{font-style:normal;color:var(--accent)}
 <div class="panel active" id="panel-0">
   <div class="truth">
     <div class="truth-t">⚡ Sebelum Mulai — Baca Ini</div>
-    <p><strong>Hard Gate berarti ini serius.</strong> Topic berikutnya terkunci sampai kau lulus checklist (≥80%) DAN quiz (≥67%). Tidak bisa cheat kecuali kau cheat diri sendiri.</p>
+    <p><strong>Hard Gate berarti ini serius.</strong> Topic berikutnya terkunci sampai kau lulus checklist (≥80%) DAN quiz (≥80%). Tidak bisa cheat kecuali kau cheat diri sendiri.</p>
     <p>Checklist dinilai oleh kamu sendiri — ini butuh <strong>kejujuran radikal</strong>. Kalau kamu centang sesuatu yang belum benar-benar bisa, kamu cuma menunda tagihan yang lebih mahal di masa depan.</p>
     <p><strong>Urutan belajar per topic:</strong> Pelajari subtopic → Practical → Isi checklist jujur → Kerjakan quiz → Kalau lulus, unlock topic berikutnya.</p>
   </div>
@@ -356,8 +854,8 @@ h1 em{font-style:normal;color:var(--accent)}
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:28px">
     <div class="model"><div class="model-t" style="color:var(--accent)">① Pelajari Subtopic</div><div class="model-d">Baca, praktek, implementasi sendiri. Jangan lanjut checklist kalau belum benar-benar paham.</div></div>
     <div class="model"><div class="model-t" style="color:var(--accent)">② Isi Checklist Jujur</div><div class="model-d">Setiap item = satu kemampuan konkret. Centang HANYA kalau bisa melakukan tanpa bantuan.</div></div>
-    <div class="model"><div class="model-t" style="color:var(--accent)">③ Kerjakan Quiz</div><div class="model-d">3 soal per topic. Butuh ≥2 benar (67%). Kalau gagal, belajar ulang dulu, baru retry.</div></div>
-    <div class="model"><div class="model-t" style="color:var(--accent)">④ Unlock & Lanjut</div><div class="model-d">Kalau checklist ≥80% dan quiz ≥67% → topic berikutnya terbuka. Ini hard gate, no shortcuts.</div></div>
+    <div class="model"><div class="model-t" style="color:var(--accent)">③ Kerjakan Quiz</div><div class="model-d">5 soal per topic. Butuh ≥4 benar (80%). Kalau gagal, belajar ulang dulu, baru retry.</div></div>
+    <div class="model"><div class="model-t" style="color:var(--accent)">④ Unlock & Lanjut</div><div class="model-d">Kalau checklist ≥80% dan quiz ≥80% → topic berikutnya terbuka. Ini hard gate, no shortcuts.</div></div>
   </div>
 
   <div class="sec">Struktur Mingguan (Semua Fase)</div>
@@ -438,47 +936,61 @@ h1 em{font-style:normal;color:var(--accent)}
   <div class="met-list" id="ml-2"></div>
 </div>
 
-<!-- ═══ FASE 3 (placeholder) ═══ -->
+<!-- ═══ FASE 3 ═══ -->
 <div class="panel" id="panel-3">
   <div class="ph">
     <div class="ph-num" style="color:var(--p3)">03</div>
     <div class="ph-info">
       <div class="ph-badge" style="background:rgba(0,212,255,.1);color:var(--p3)">FASE 3 — BULAN 18–36</div>
       <div class="ph-title" style="color:var(--p3)">Advanced — System Design & Scale</div>
-      <div class="ph-sub">System Design · High-Scale Backend · Distributed Patterns · Observability</div>
+      <div class="ph-sub">System Design · Caching · Message Queues · Containers · CI/CD</div>
     </div>
     <div class="ph-pct-wrap">
       <span class="ph-pct" id="pp3" style="color:var(--p3)">0%</span>
       <span class="ph-pct-l">lulus</span>
     </div>
   </div>
-  <div class="truth" style="border-left-color:var(--p3)">
-    <div class="truth-t">📋 Detail Assessment Coming</div>
-    <p>Fase 3 & 4 menggunakan sistem track progress dari roadmap v1. Assessment mendalam (subtopic + quiz + gate) akan ditambahkan setelah kamu menyelesaikan Fase 1 & 2.</p>
-    <p><strong>Focus dulu:</strong> Selesaikan Fase 1 → Fase 2. Fase 3 assessment tidak relevan sampai kamu solid di fundamentals.</p>
+
+  <div class="sec">Topics — Hard Gate Active</div>
+  <div class="topic-list" id="tl-3"></div>
+
+  <div class="sec">Yang HARUS Diabaikan di Fase Ini</div>
+  <div class="ignore-grid">
+    <div class="ignore-i">✕ Building your own framework</div>
+    <div class="ignore-i">✕ Premature multi-cloud</div>
+    <div class="ignore-i">✕ Service mesh complexity</div>
+    <div class="ignore-i">✕ ML/AI engineering (kecuali spesialisasi)</div>
+    <div class="ignore-i">✕ Blockchain / Web3</div>
+    <div class="ignore-i">✕ Over-optimization tanpa data</div>
   </div>
+
   <div class="sec">Metrics Kelulusan Fase 3</div>
   <div class="met-list" id="ml-3"></div>
 </div>
 
-<!-- ═══ FASE 4 (placeholder) ═══ -->
+<!-- ═══ FASE 4 ═══ -->
 <div class="panel" id="panel-4">
   <div class="ph">
     <div class="ph-num" style="color:var(--p4)">04</div>
     <div class="ph-info">
       <div class="ph-badge" style="background:rgba(255,60,172,.1);color:var(--p4)">FASE 4 — BULAN 36–60</div>
       <div class="ph-title" style="color:var(--p4)">Expert — Specialization & Leadership</div>
-      <div class="ph-sub">Deep Specialization · Open Source · Technical Leadership · Impact</div>
+      <div class="ph-sub">Deep Specialization · Open Source · Technical Writing · Leadership</div>
     </div>
     <div class="ph-pct-wrap">
       <span class="ph-pct" id="pp4" style="color:var(--p4)">0%</span>
       <span class="ph-pct-l">lulus</span>
     </div>
   </div>
+
   <div class="truth" style="border-left-color:var(--p4)">
-    <div class="truth-t">📋 Detail Assessment Coming</div>
-    <p>Di level Expert, assessment berubah bentuk: bukan lagi quiz soal, tapi <strong>portofolio review, open-source contribution, dan peer assessment</strong>. Ini akan ditambahkan saat kamu mendekati Fase 4.</p>
+    <div class="truth-t">⚡ Catatan Fase 4</div>
+    <p>Di level Expert, assessment lebih bersifat <strong>portfolio-based</strong>. Checklist berfokus pada output nyata (kontribusi open source, tech talks, project leadership) — bukan hanya pengetahuan teori.</p>
   </div>
+
+  <div class="sec">Topics — Hard Gate Active</div>
+  <div class="topic-list" id="tl-4"></div>
+
   <div class="sec">Metrics Kelulusan Fase 4</div>
   <div class="met-list" id="ml-4"></div>
 </div>
@@ -495,6 +1007,7 @@ const TOPICS = {
     {
       id:'f1t01', title:'Variables, Types & Control Flow',
       why:'Bedrock mutlak. Kalau ini goyah, semuanya goyah.',
+      resource:{type:'🎥',name:'CS50 Lecture 1 — C',url:'https://cs50.harvard.edu/x/2024/lectures/1/'},
       subtopics:[
         {t:'Variables & Mutability', g:'Bisa jelaskan perbedaan mutable vs immutable, dan kenapa immutability lebih aman.'},
         {t:'Primitive Types (int, float, bool, string)', g:'Bisa konversi antar tipe dan jelaskan kapan pakai yang mana.'},
@@ -519,11 +1032,18 @@ const TOPICS = {
         {q:'Manakah yang BENAR tentang variabel dalam fungsi?',
           opts:['Variabel dalam fungsi bisa diakses dari luar','Variabel dalam fungsi bersifat lokal — hanya hidup di dalam fungsi itu','Semua variabel selalu global','Variabel fungsi otomatis dihapus saat program selesai'],correct:1,
           explain:'Scope lokal: variabel yang dideklarasi dalam fungsi hanya bisa diakses dalam fungsi itu. Ini prinsip encapsulation dasar.'},
+        {q:'Apa output dari kode ini?\n\nfor i in range(5):\n    if i == 3:\n        break\n    print(i)',
+          opts:['0 1 2 3 4','0 1 2 3','0 1 2','3'],correct:2,
+          explain:'Loop berjalan dari i=0. Saat i=3, break langsung menghentikan loop sebelum print(3) dieksekusi. Output: 0, 1, 2.'},
+        {q:'Manakah yang merupakan implicit type coercion yang BERBAHAYA?',
+          opts:['int("42") menghasilkan 42','"5" + 3 menghasilkan "53" di JavaScript (string concatenation, bukan addition)','True == 1 di Python','len("hello") menghasilkan 5'],correct:1,
+          explain:'Di JavaScript, + operator melakukan string concatenation jika salah satu operand adalah string. "5" + 3 = "53" bukan 8. Ini sumber bug yang sangat umum. Python akan raise TypeError untuk kasus serupa.'},
       ]
     },
     {
       id:'f1t02', title:'Functions, Scope & Closures',
       why:'Abstraksi fundamental yang dipakai di setiap codebase sepanjang karir kamu.',
+      resource:{type:'📖',name:'Python Docs — Defining Functions',url:'https://docs.python.org/3/tutorial/controlflow.html#defining-functions'},
       subtopics:[
         {t:'Function Definition & Parameters', g:'Bisa buat fungsi dengan default params, *args, **kwargs (atau equivalentnya).'},
         {t:'Return Values & Multiple Returns', g:'Bisa jelaskan apa yang terjadi kalau fungsi tidak return apapun.'},
@@ -548,11 +1068,18 @@ const TOPICS = {
         {q:'Apa yang dimaksud "closure" dalam pemrograman?',
           opts:['Fungsi yang tidak bisa dipanggil dari luar','Fungsi yang mengingat variabel dari scope luar setelah scope itu selesai eksekusi','Cara untuk menutup file setelah dibuka','Teknik untuk menyembunyikan variabel global'],correct:1,
           explain:'Closure = fungsi + environment variabel dari enclosing scope-nya. Berguna untuk membuat stateful functions tanpa class.'},
+        {q:'Apa output kode ini?\n\ndef make_adder(n):\n    def adder(x):\n        return x + n\n    return adder\n\nadd5 = make_adder(5)\nprint(add5(3))',
+          opts:['5','3','8','Error'],correct:2,
+          explain:'make_adder(5) return fungsi adder yang "ingat" n=5 (closure). add5(3) = 3 + 5 = 8. Ini contoh practical closure: factory function yang buat customized functions.'},
+        {q:'Apa perbedaan utama antara pure function dan function dengan side effects?',
+          opts:['Pure function lebih cepat','Pure function selalu return nilai yang sama untuk input yang sama dan tidak mengubah state eksternal','Pure function tidak boleh punya parameter','Function dengan side effects selalu error'],correct:1,
+          explain:'Pure function: deterministic (input sama → output sama) + no side effects (tidak ubah variabel global, tidak print, tidak write file). Ini membuat kode lebih predictable, testable, dan debug-friendly.'},
       ]
     },
     {
       id:'f1t03', title:'Error Handling',
       why:'Code tanpa error handling = bom waktu di production. Ini bukan opsional.',
+      resource:{type:'📖',name:'Python Docs — Errors and Exceptions',url:'https://docs.python.org/3/tutorial/errors.html'},
       subtopics:[
         {t:'Exception Types & Hierarchy', g:'Bisa bedakan ValueError, TypeError, KeyError, IndexError — dan kapan masing-masing terjadi.'},
         {t:'try / except / finally / else', g:'Bisa jelaskan kapan finally dieksekusi bahkan ketika exception terjadi.'},
@@ -577,11 +1104,18 @@ const TOPICS = {
         {q:'Kapan kamu SEBAIKNYA membuat Custom Exception?',
           opts:['Tidak pernah, pakai Exception bawaan saja','Ketika domain bisnis punya kondisi error yang spesifik dan perlu ditangani berbeda','Setiap kali ada error','Hanya untuk errors yang menyebabkan crash'],correct:1,
           explain:'Custom Exception berguna ketika kamu punya domain-specific errors, misalnya InsufficientFundsError di aplikasi banking. Ini membuat error handling lebih eksplisit dan kode lebih readable.'},
+        {q:'Apa output kode ini?\n\ntry:\n    x = 1/0\nexcept ZeroDivisionError:\n    print("A")\nfinally:\n    print("B")',
+          opts:['A','B','A lalu B','Error'],correct:2,
+          explain:'except menangkap ZeroDivisionError → print A. finally SELALU dieksekusi → print B. Output: A lalu B. finally berguna untuk cleanup resources.'},
+        {q:'Apa masalah utama dari kode ini?\n\ntry:\n    data = fetch_data()\n    process(data)\n    save(data)\nexcept:\n    pass',
+          opts:['Kode ini benar dan aman','Bare except:pass menyembunyikan SEMUA error termasuk bug fatal — kamu tidak akan tahu ada masalah sampai data hilang atau corrupt','except seharusnya pakai finally','try block terlalu panjang saja'],correct:1,
+          explain:'except: pass adalah anti-pattern paling berbahaya. Ia menangkap semua exception (termasuk KeyboardInterrupt, MemoryError) dan diam-diam mengabaikannya. Bug tersembunyi, data bisa corrupt tanpa warning. Selalu catch exception spesifik dan log error.'},
       ]
     },
     {
       id:'f1t04', title:'Data Structures: Array, LinkedList, Stack, Queue',
       why:'Pilihan struktur data yang tepat bisa buat perbedaan antara O(1) dan O(n). Ini bukan teori akademis.',
+      resource:{type:'🎥',name:'CS50 — Arrays & Linked Lists',url:'https://cs50.harvard.edu/x/2024/lectures/5/'},
       subtopics:[
         {t:'Dynamic Array & Amortized Complexity', g:'Bisa jelaskan kenapa resize dynamic array itu O(n) tapi amortized O(1).'},
         {t:'Singly & Doubly Linked List', g:'Bisa implement insert, delete, reverse linked list dari scratch.'},
@@ -606,11 +1140,18 @@ const TOPICS = {
         {q:'Struktur data mana yang PALING TEPAT untuk implementasi "tombol Undo" di text editor?',
           opts:['Queue — karena urutan penting','Stack — LIFO sesuai dengan undo: aksi terakhir di-undo pertama','Array — karena perlu akses random','LinkedList — karena ukurannya dinamis'],correct:1,
           explain:'Stack (LIFO): ketika user undo, aksi yang paling terakhir dilakukan harus di-undo pertama. LIFO = Last In First Out, persis seperti behavior undo/redo. Ini contoh konkret DS selection based on access pattern.'},
+        {q:'Kamu perlu sering insert/delete di awal list tapi jarang akses elemen by index. Struktur data mana yang paling efisien?',
+          opts:['Dynamic Array — O(1) append','Linked List — O(1) insert/delete di head, trade-off O(n) random access','Stack — karena LIFO','Hash Table — O(1) lookup'],correct:1,
+          explain:'Linked List unggul untuk insert/delete di head (O(1) — hanya update pointer). Array insert di awal = O(n) karena shift semua elemen. Trade-off: Linked List O(n) random access vs Array O(1). Pilih berdasarkan access pattern.'},
+        {q:'Apa yang terjadi jika kamu pop() dari Stack yang kosong?',
+          opts:['Return 0','Return null/None','Error/Exception — Stack Underflow','Stack otomatis resize'],correct:2,
+          explain:'Pop dari empty stack = Stack Underflow error. Ini kenapa implementasi Stack harus selalu cek isEmpty() sebelum pop. Guard clause ini adalah contoh defensive programming pada data structure operations.'},
       ]
     },
     {
       id:'f1t05', title:'Data Structures: Hash Table & Set',
       why:'Hash Table adalah salah satu DS paling sering dipakai. Hampir setiap masalah bisa diselesaikan lebih efisien dengan ini.',
+      resource:{type:'📖',name:'Grokking Algorithms — Hash Tables',url:'https://livebook.manning.com/book/grokking-algorithms-second-edition/chapter-5/'},
       subtopics:[
         {t:'Hash Function & Hash Collision', g:'Bisa jelaskan apa itu collision dan mengapa ia tidak bisa dihindari (pigeonhole principle).'},
         {t:'Collision Resolution: Chaining vs Open Addressing', g:'Bisa gambarkan bagaimana chaining bekerja dengan linked list per bucket.'},
@@ -635,11 +1176,18 @@ const TOPICS = {
         {q:'Apa itu "load factor" pada Hash Table?',
           opts:['Jumlah total element dalam hash table','Ratio: jumlah element / jumlah bucket. Semakin tinggi → lebih banyak collision','Kecepatan hash function','Ukuran maksimal hash table'],correct:1,
           explain:'Load factor = n/k (n=elements, k=buckets). Load factor tinggi → banyak collision → performance turun. Umumnya rehashing terjadi saat load factor > 0.75, memperbesar array dan re-hash semua keys.'},
+        {q:'Apa hasil dari: set([1,2,3]) & set([2,3,4]) di Python?',
+          opts:['{1,2,3,4}','{2,3}','{1,4}','Error'],correct:1,
+          explain:'Operator & pada Set = intersection (irisan). Elemen yang ada di KEDUA set: 2 dan 3. Union (|) = {1,2,3,4}. Difference (-) = {1}. Set operations sangat berguna untuk filtering dan deduplication.'},
+        {q:'Kenapa String TIDAK cocok sebagai key di HashMap jika string-nya sangat panjang (misal 10.000 karakter)?',
+          opts:['String tidak bisa jadi key','Hashing string panjang butuh O(n) waktu — setiap lookup menjadi mahal, bukan O(1) lagi','String selalu collision','HashMap tidak support string'],correct:1,
+          explain:'Hash function harus memproses seluruh string untuk generate hash → O(n) dimana n = panjang string. Untuk string sangat panjang, cost hashing mendominasi. Solusi: gunakan shorter key, atau cache hash value.'},
       ]
     },
     {
       id:'f1t06', title:'Data Structures: Trees & Heap',
       why:'Tree muncul di mana-mana: file system, DOM, database indexes (B-Tree), decision trees, expression trees.',
+      resource:{type:'🎥',name:'Abdul Bari — Binary Search Trees',url:'https://www.youtube.com/watch?v=COZK7NAtk8s'},
       subtopics:[
         {t:'Binary Tree Fundamentals & Traversal', g:'Bisa implementasi in-order, pre-order, post-order traversal secara rekursif DAN iteratif.'},
         {t:'Binary Search Tree (BST)', g:'Bisa implement insert, search, delete di BST dan jelaskan kenapa balanced tree penting.'},
@@ -664,11 +1212,18 @@ const TOPICS = {
         {q:'Mengapa insert ke Min Heap O(log n), bukan O(1)?',
           opts:['Karena kita perlu search posisi yang tepat','Karena setelah insert di akhir, kita perlu "bubble up" untuk maintain heap property — max log n steps','Karena heap selalu perlu di-sort ulang','Karena heap menggunakan linked list'],correct:1,
           explain:'Heap disimpan sebagai array. Insert di akhir = O(1). Tapi heap property bisa violated, jadi perlu sift-up (swap dengan parent) sampai property terpenuhi. Tree height = log n → max log n swaps = O(log n).'},
+        {q:'Kamu punya BST dan perlu menemukan elemen terkecil. Bagaimana cara paling efisien?',
+          opts:['Traverse seluruh tree O(n)','Terus jalan ke left child sampai null — elemen terkecil selalu di node paling kiri','Sort semua elemen lalu ambil pertama','Cek root saja'],correct:1,
+          explain:'Karena BST property: left < root < right, elemen terkecil selalu di node paling kiri (leftmost). Cukup traverse ke kiri terus sampai node.left == null. Complexity: O(h) dimana h = height tree. Untuk balanced tree: O(log n).'},
+        {q:'Heap digunakan untuk implementasi Priority Queue. Kenapa bukan sorted array?',
+          opts:['Sorted array lebih lambat untuk semua operasi','Heap: insert O(log n) + extract-min O(log n). Sorted array: insert O(n) karena perlu geser elemen untuk maintain sorted order','Heap menggunakan lebih sedikit memory','Sorted array tidak bisa menyimpan prioritas'],correct:1,
+          explain:'Sorted array: insert = O(n) karena harus cari posisi + geser elemen. Extract min = O(1) tapi insert yang mahal. Heap: insert = O(log n), extract-min = O(log n). Untuk queue dengan banyak insert + extract, heap jauh lebih efisien.'},
       ]
     },
     {
       id:'f1t07', title:'Data Structures: Graph',
       why:'Banyak masalah dunia nyata adalah graph problems: social network, peta, dependency resolution, web crawling.',
+      resource:{type:'📖',name:'Grokking Algorithms — Graphs & BFS',url:'https://livebook.manning.com/book/grokking-algorithms-second-edition/chapter-6/'},
       subtopics:[
         {t:'Graph Terminology: Vertex, Edge, Directed vs Undirected, Weighted', g:'Bisa model problem nyata sebagai graph dan tentukan jenis graph yang tepat.'},
         {t:'Representation: Adjacency List vs Adjacency Matrix', g:'Bisa jelaskan space/time trade-off keduanya untuk sparse vs dense graph.'},
@@ -693,11 +1248,18 @@ const TOPICS = {
         {q:'Topological sort hanya bisa dilakukan pada graph dengan sifat...',
           opts:['Undirected dan connected','Directed dan Acyclic (DAG)','Weighted dan complete','Sparse dan connected'],correct:1,
           explain:'Topological sort membutuhkan DAG (Directed Acyclic Graph). "Directed" karena ada dependency arah (A bergantung pada B). "Acyclic" karena jika ada cycle, tidak ada urutan yang valid (A→B→C→A: mana yang duluan?).'},
+        {q:'DFS pada graph bisa mendeteksi cycle. Bagaimana caranya?',
+          opts:['Jika DFS mengunjungi node yang sudah selesai diproses','Jika DFS mengunjungi node yang masih dalam rekursi stack (back edge) — artinya ada jalur kembali ke ancestor','Jika graph punya lebih dari V edges','Jika DFS tidak bisa reach semua node'],correct:1,
+          explain:'Saat DFS, node bisa dalam 3 state: unvisited, in-stack (sedang diproses), done. Jika kita encounter node yang masih in-stack → ada back edge → cycle terdeteksi. Ini fundamental untuk dependency resolution (npm, pip).'},
+        {q:'Social network: A berteman dengan B, B berteman dengan C. Cara paling efisien untuk cek apakah A dan C terhubung (langsung atau tidak)?',
+          opts:['Cek semua pasangan — O(n²)','BFS/DFS dari A — jika C ditemukan, mereka terhubung. O(V+E)','Sort daftar teman','Gunakan hash table'],correct:1,
+          explain:'Graph traversal (BFS/DFS) dari node A: jelajahi semua node yang reachable. Jika C ditemukan, mereka connected. Time: O(V+E). Ini lebih efisien dari brute force O(n²) dan merupakan building block untuk fitur "mutual friends", "degrees of separation".'},
       ]
     },
     {
       id:'f1t08', title:'Algoritma: Sorting & Searching',
       why:'Sorting dan searching adalah operasi paling fundamental. Paham internals-nya = intuisi untuk optimize hal lain.',
+      resource:{type:'📖',name:'Grokking Algorithms — Quicksort',url:'https://livebook.manning.com/book/grokking-algorithms-second-edition/chapter-4/'},
       subtopics:[
         {t:'Bubble, Selection, Insertion Sort — O(n²)', g:'Bisa implement dan jelaskan kapan insertion sort lebih baik dari quicksort (nearly sorted data).'},
         {t:'Merge Sort — Divide & Conquer', g:'Bisa implement merge sort dan jelaskan kenapa guaranteed O(n log n).'},
@@ -722,11 +1284,18 @@ const TOPICS = {
         {q:'Kamu sort data transaksi berdasarkan amount. Ada 2 transaksi dengan amount sama tapi timestamp berbeda. Kapan "stable sort" penting di sini?',
           opts:['Tidak pernah penting','Jika kamu ingin transaksi dengan timestamp lebih awal tetap muncul sebelum yang lebih baru (preserves original order)','Hanya penting untuk data numerik','Jika data lebih dari 1000 elemen'],correct:1,
           explain:'Stable sort mempertahankan urutan relatif elemen yang sama. Jika data sudah diurutkan by timestamp, lalu di-sort by amount dengan stable sort, urutan timestamp tetap terjaga untuk amount yang sama. Unstable sort bisa mengacak urutan timestamp.'},
+        {q:'Binary search pada array [1,3,5,7,9]: cari nilai 7. Berapa kali perbandingan dilakukan?',
+          opts:['1 kali','2 kali','3 kali','5 kali'],correct:1,
+          explain:'Step 1: mid=5, 7>5 → cari kanan [7,9]. Step 2: mid=7, 7==7 → ditemukan! 2 perbandingan. Binary search mengeliminasi setengah data setiap step → O(log n).'},
+        {q:'Kapan Insertion Sort bisa lebih cepat dari Quick Sort?',
+          opts:['Tidak pernah — Quick Sort selalu lebih cepat','Ketika data hampir terurut (nearly sorted) — Insertion Sort menjadi mendekati O(n)','Ketika data sangat besar','Ketika data berisi string'],correct:1,
+          explain:'Insertion Sort pada nearly sorted data: setiap elemen hanya perlu bergeser sedikit → mendekati O(n). Quick Sort tetap O(n log n) regardless. Banyak library sorting (TimSort di Python/Java) menggunakan Insertion Sort untuk sub-array kecil karena alasan ini.'},
       ]
     },
     {
       id:'f1t09', title:'Algoritma: Rekursi & Dynamic Programming Intro',
       why:'Rekursi adalah cara berpikir, bukan cuma teknik. DP adalah rekursi yang dioptimasi. Ini foundation problem-solving mindset.',
+      resource:{type:'🎥',name:'Reducible — Dynamic Programming',url:'https://www.youtube.com/watch?v=oBt53YbR9Kk'},
       subtopics:[
         {t:'Rekursi: Base Case & Recursive Case', g:'Bisa identify dan implementasi base case yang benar untuk mencegah infinite recursion.'},
         {t:'Call Stack & Stack Overflow', g:'Bisa jelaskan bagaimana call stack bekerja saat fungsi rekursif dipanggil.'},
@@ -751,11 +1320,18 @@ const TOPICS = {
         {q:'Sebuah problem memiliki "optimal substructure." Artinya...',
           opts:['Problem bisa diselesaikan dengan sorting','Solusi optimal problem bisa dibangun dari solusi optimal sub-problemnya','Problem hanya bisa diselesaikan dengan rekursi','Sub-problem selalu berukuran sama'],correct:1,
           explain:'Optimal substructure adalah salah satu karakteristik DP. Contoh: shortest path dari A ke C melalui B = shortest(A,B) + shortest(B,C). Kita bisa build solusi optimal dari sub-solusi yang optimal. Tanpa ini, DP tidak applicable.'},
+        {q:'Climbing Stairs: ada n anak tangga, tiap langkah bisa naik 1 atau 2 anak tangga. Berapa cara untuk n=4?',
+          opts:['3','4','5','8'],correct:2,
+          explain:'f(1)=1, f(2)=2, f(3)=f(2)+f(1)=3, f(4)=f(3)+f(2)=5. Pattern: sama seperti Fibonacci! Ini contoh classic DP: untuk sampai step n, kamu bisa dari step n-1 (1 langkah) atau n-2 (2 langkah). Total cara = f(n-1) + f(n-2).'},
+        {q:'Apa perbedaan utama antara memoization (top-down) dan tabulation (bottom-up)?',
+          opts:['Tidak ada perbedaan','Memoization mulai dari problem besar dan cache subproblem saat dibutuhkan (lazy). Tabulation mulai dari subproblem terkecil dan build up ke solusi (eager)','Memoization lebih cepat','Tabulation menggunakan rekursi'],correct:1,
+          explain:'Memoization: rekursif + cache — hanya compute subproblem yang benar-benar dibutuhkan. Tabulation: iteratif + array — compute semua subproblem dari kecil ke besar. Trade-off: memoization bisa stack overflow untuk n besar, tabulation butuh space O(n) tapi no stack risk.'},
       ]
     },
     {
       id:'f1t10', title:'OS Basics: Process, Thread & Memory',
       why:'Memahami apa yang terjadi saat code kamu berjalan. Tanpa ini, kamu debug tanpa peta.',
+      resource:{type:'🎥',name:'CS50 — Memory',url:'https://cs50.harvard.edu/x/2024/lectures/4/'},
       subtopics:[
         {t:'Process vs Thread', g:'Bisa jelaskan perbedaan memory space antara process dan thread dengan analogi yang jelas.'},
         {t:'Context Switching & Scheduling', g:'Bisa jelaskan kenapa terlalu banyak threads bisa memperlambat program.'},
@@ -780,11 +1356,18 @@ const TOPICS = {
         {q:'Memory leak bisa terjadi meski dengan Garbage Collector karena...',
           opts:['GC tidak bekerja di semua bahasa','Jika ada reference ke object yang seharusnya tidak diperlukan lagi, GC tidak bisa free object tersebut — object masih "reachable"','GC hanya bekerja untuk primitive types','GC membutuhkan manual trigger'],correct:1,
           explain:'GC hanya free memory yang tidak "reachable" (tidak ada reference). Jika kamu menyimpan reference ke object di global list/cache tapi tidak pernah menghapusnya, GC tidak bisa free memory itu — itulah memory leak dengan GC.'},
+        {q:'Program kamu menggunakan 2 threads yang masing-masing perlu lock A dan lock B. Thread 1 acquire A lalu B, Thread 2 acquire B lalu A. Apa risikonya?',
+          opts:['Tidak ada masalah','Deadlock — Thread 1 hold A, wait B. Thread 2 hold B, wait A. Keduanya stuck selamanya','Race condition','Memory leak'],correct:1,
+          explain:'Classic deadlock: circular wait. Thread 1 pegang A, mau B. Thread 2 pegang B, mau A. Solusi: consistent lock ordering — SEMUA thread acquire A dulu, baru B. Urutan yang sama = no circular wait = no deadlock.'},
+        {q:'Stack memory vs Heap memory: mana yang lebih cepat untuk alokasi, dan kenapa?',
+          opts:['Heap lebih cepat karena lebih besar','Stack lebih cepat — alokasi hanya geser stack pointer (1 instruksi). Heap perlu cari free block yang cukup besar (fragmentasi)','Keduanya sama cepat','Tergantung bahasa pemrograman'],correct:1,
+          explain:'Stack: push = geser pointer, pop = geser balik. O(1), 1 CPU instruction. Heap: malloc/new harus cari contiguous free block → free list traversal, possible fragmentation. Jauh lebih lambat. Ini kenapa variabel lokal di stack, objects di heap.'},
       ]
     },
     {
       id:'f1t11', title:'Networking: TCP/IP, HTTP & DNS',
       why:'Semua aplikasi modern berbicara lewat network. Debugging network issues tanpa paham ini = buta.',
+      resource:{type:'🎥',name:'Fireship — HTTP in 100 Seconds',url:'https://www.youtube.com/watch?v=iYM2zFP3Zn0'},
       subtopics:[
         {t:'OSI Model (Simplified: 4 Layer TCP/IP)', g:'Bisa jelaskan apa yang terjadi di setiap layer saat browser request halaman web.'},
         {t:'TCP vs UDP', g:'Bisa jelaskan kapan UDP lebih tepat dari TCP dengan contoh konkret (video streaming, gaming).'},
@@ -809,11 +1392,18 @@ const TOPICS = {
         {q:'Saat browser request "api.example.com/users", langkah pertama yang terjadi sebelum TCP connection adalah...',
           opts:['Browser langsung kirim HTTP request','DNS resolution — browser tanya DNS server: "IP berapa untuk api.example.com?"','Browser buka koneksi ke server','Browser generate TLS certificate'],correct:1,
           explain:'DNS resolution dulu: browser → OS cache → router cache → ISP DNS → root DNS → TLD DNS → authoritative DNS → dapat IP. Setelah dapat IP, baru TCP 3-way handshake, lalu TLS (jika HTTPS), lalu HTTP request. DNS lookup bisa jadi bottleneck performance.'},
+        {q:'Apa yang terjadi saat TCP 3-way handshake?',
+          opts:['Client kirim data langsung ke server','Client kirim SYN, server balas SYN-ACK, client kirim ACK — koneksi established setelah 3 langkah ini','Server kirim data ke client tanpa diminta','Client dan server exchange encryption keys'],correct:1,
+          explain:'SYN (synchronize): client minta koneksi. SYN-ACK: server setuju dan acknowledge. ACK: client confirm. Setelah ini, koneksi TCP established dan data bisa mengalir. Ini memastikan kedua pihak siap sebelum transfer data.'},
+        {q:'HTTP request method PATCH vs PUT — apa bedanya?',
+          opts:['Tidak ada beda','PUT mengganti SELURUH resource dengan data baru. PATCH hanya mengubah SEBAGIAN field yang dikirim','PATCH lebih cepat','PUT untuk create, PATCH untuk delete'],correct:1,
+          explain:'PUT /users/1 {name:"A",email:"a@b.com"} → replace seluruh user 1. PATCH /users/1 {name:"A"} → hanya update nama, email tetap. PUT = full replacement (idempotent). PATCH = partial update. Penting untuk API design yang benar.'},
       ]
     },
     {
       id:'f1t12', title:'SQL & Database Fundamentals',
       why:'Data hidup di database. Engineer yang tidak bisa nulis SQL yang benar adalah liabilitas untuk setiap tim.',
+      resource:{type:'📝',name:'SQLBolt — Interactive SQL Tutorial',url:'https://sqlbolt.com/'},
       subtopics:[
         {t:'Relational Model: Tables, Keys, Relationships', g:'Bisa design schema sederhana dengan proper primary key, foreign key, dan relationship types.'},
         {t:'CRUD Operations: SELECT, INSERT, UPDATE, DELETE', g:'Bisa tulis semua CRUD operations dengan WHERE, ORDER BY, LIMIT.'},
@@ -838,11 +1428,18 @@ const TOPICS = {
         {q:'Kenapa menambahkan index pada kolom "email" di tabel users dengan 10 juta baris sangat mempercepat SELECT tapi sedikit memperlambat INSERT?',
           opts:['Index mengkompres data, jadi SELECT lebih cepat','SELECT lebih cepat: index = binary search O(log n) vs full scan O(n). INSERT lebih lambat: setiap insert harus update struktur index (B-tree) selain tabel utama','Index hanya bekerja untuk primary key','INSERT lebih lambat karena index butuh sorting'],correct:1,
           explain:'Index = B-tree terpisah yang sorted. SELECT: jump langsung ke posisi yang tepat O(log n) vs full table scan O(n). INSERT: selain insert ke tabel, harus update/rebalance B-tree index → overhead. Trade-off: read-heavy → tambah index. Write-heavy → hati-hati dengan terlalu banyak index.'},
+        {q:'Apa perbedaan antara WHERE dan HAVING?',
+          opts:['Keduanya sama','WHERE filter baris SEBELUM GROUP BY. HAVING filter group SETELAH GROUP BY — HAVING bisa pakai aggregate functions (COUNT, SUM)','HAVING lebih cepat','WHERE hanya untuk angka'],correct:1,
+          explain:'WHERE: filter individual rows sebelum grouping. HAVING: filter groups setelah aggregation. Contoh: SELECT dept, COUNT(*) FROM emp WHERE salary>50000 GROUP BY dept HAVING COUNT(*)>5 — WHERE filter gaji, HAVING filter departemen.'},
+        {q:'Primary Key vs Foreign Key — apa perbedaannya?',
+          opts:['Keduanya sama','Primary Key: identifier unik untuk setiap row dalam tabel. Foreign Key: kolom yang mereferensi Primary Key tabel lain untuk membuat relationship','Primary Key bisa null','Foreign Key harus unik'],correct:1,
+          explain:'PK: unique + not null, identifikasi setiap record (users.id). FK: mereferensi PK tabel lain (orders.user_id → users.id), membuat relationship antar tabel. FK bisa null (optional relationship) dan tidak harus unique (one-to-many).'},
       ]
     },
     {
       id:'f1t13', title:'Git & Command Line Essentials',
       why:'Tanpa ini, kamu bukan engineer profesional. Git adalah time machine kode; CLI adalah cockpit yang sesungguhnya.',
+      resource:{type:'🎥',name:'Fireship — Git in 100 Seconds',url:'https://www.youtube.com/watch?v=hwP7WQkmECE'},
       subtopics:[
         {t:'CLI Navigation & File Operations', g:'Bisa navigasi, create, move, copy, delete files dengan command line tanpa GUI.'},
         {t:'Git Fundamentals: init, add, commit, push, pull', g:'Bisa explain apa yang ada di working directory, staging area, dan local repository.'},
@@ -867,8 +1464,40 @@ const TOPICS = {
         {q:'Command mana yang digunakan untuk melihat siapa yang menulis baris tertentu dalam file?',
           opts:['git log --author','git blame — menampilkan commit hash, author, dan tanggal untuk setiap baris file','git diff --name-only','git show --stat'],correct:1,
           explain:'git blame <file>: setiap baris ditampilkan dengan commit hash, author, dan timestamp. Berguna untuk debug: "Siapa yang mengubah baris ini dan kapan?" Lalu git show <hash> untuk lihat full commit context.'},
+        {q:'Kamu accidentally commit file .env yang berisi API keys. Apa yang HARUS dilakukan?',
+          opts:['Delete file dan commit lagi — sudah aman','Rotate/revoke API keys SEGERA, lalu gunakan git filter-branch atau BFG Repo Cleaner untuk hapus dari history. Delete+commit TIDAK cukup karena key masih ada di git history','Tambahkan .env ke .gitignore saja','Buat repository baru'],correct:1,
+          explain:'Git menyimpan SEMUA history. Bahkan setelah delete+commit, siapapun bisa checkout commit lama dan lihat key-nya. Step: (1) Rotate keys immediately, (2) Remove dari history dengan BFG/filter-branch, (3) Force push, (4) Tambah ke .gitignore.'},
+        {q:'Apa fungsi perintah: cat file.txt | grep "error" | wc -l',
+          opts:['Menampilkan isi file.txt','Menghitung jumlah baris dalam file.txt yang mengandung kata "error" — menggunakan pipe (|) untuk chain 3 commands','Mencari file bernama error','Menghapus baris yang mengandung error'],correct:1,
+          explain:'Pipe (|) menghubungkan output satu command ke input command berikutnya. cat → tampilkan isi file. grep "error" → filter hanya baris yang mengandung "error". wc -l → hitung jumlah baris. Ini kekuatan CLI: composability.'},
       ]
     },
+    {
+id:'f1gate', title:'🏗️ Capstone Project: CLI Data Structure Visualizer',
+    why:'Waktunya menggabungkan semua fundamental. Tidak ada copy-paste tutorial, murni pemecahan masalah.',
+    resource:{type:'📝',name:'Project Guidelines',url:'#'},
+    subtopics:[
+      {t:'Core Operations', g:'Implementasi operasi dasar (push, pop, enqueue, dequeue, insert, delete).'},
+      {t:'State Management', g:'Program berjalan terus dalam while-loop sampai user memilih "exit".'},
+      {t:'Error Handling', g:'Menangani input user yang tidak valid tanpa aplikasi crash.'},
+      {t:'Clean Code', g:'Kode dipecah ke fungsi/class yang modular, tidak semua dalam satu file main.'},
+      {t:'Version Control', g:'Minimal 5 commits dengan pesan yang bermakna.'}
+    ],
+    checklist:[
+      'Aplikasi CLI berjalan lancar tanpa runtime errors',
+      'Minimal mengimplementasikan Stack, Queue, dan satu jenis Tree/Graph',
+      'Setiap operasi divalidasi (misal: pop dari stack kosong mengembalikan pesan error, bukan crash)',
+      'Sudah melakukan AI Code Review dan mendapat skor minimal 8/10',
+      'Paham setiap baris kode yang ditulis (lulus ujian Socratic Grilling terhadap kodemu sendiri)'
+    ],
+    quiz:[
+      {q:'Dalam proyek ini, apa cara terbaik menangani input user yang tidak valid?', opts:['Membiarkan program crash agar user tahu salahnya','Menggunakan try-catch/error handling dan meminta input ulang','Mengabaikan input dan kembali ke menu utama secara diam-diam','Menggunakan rekursi'], correct:1, explain:'Aplikasi yang baik harus tangguh (robust) terhadap input yang buruk. Membiarkan crash adalah user experience yang fatal.'},
+      {q:'Mengapa penting untuk memecah logika aplikasi ke beberapa file/fungsi?', opts:['Agar terlihat seperti programmer profesional','Membuat kode lebih panjang','Separation of Concerns — memudahkan testing, debugging, dan pemahaman alur program','Agar program berjalan lebih cepat'], correct:2, explain:'File "spaghetti" sepanjang 1000 baris sangat sulit di-maintain. Pisahkan UI (CLI menu), Business Logic (Data structure algorithms), dan state.'},
+      {q:'Jika kamu menemukan bug aneh saat dequeue dari antrian (Queue), apa langkah debugging pertama?', opts:['Tanya ChatGPT/StackOverflow','Menambahkan print statements atau menggunakan debugger di sekitar area state perubahan untuk melihat nilai variabel','Menulis ulang seluruh fungsi queue','Mengganti bahasa pemrograman'], correct:1, explain:'Debugging adalah skill esensial. Jangan main tebak-tebakan. Isolasi masalah dengan melihat state internal di memori sebelum dan sesudah instruksi eksekusi.'},
+      {q:'Tujuan utama dari Capstone Project ini adalah...', opts:['Untuk pamer di LinkedIn','Mendapatkan sertifikat','Membangun muscle memory dan membuktikan bahwa kamu bisa mengintegrasikan berbagai konsep yang dipelajari secara terpisah','Mencari celah keamanan CLI'], correct:2, explain:'Bisa menjawab kuis dan mengisi checklist itu mudah. Menggabungkan konsep menjadi aplikasi yang utuh dan berjalan adalah ujian sebenarnya dari kompetensi.'},
+      {q:'Setelah project selesai, apa langkah paling krusial sebelum melanjutkan ke Fase 2?', opts:['Langsung pindah ke Fase 2','Merayakan keberhasilan','Melakukan code review dengan AI secara brutal, memperbaiki bad habits, dan memastikan pemahaman solid','Menghapus proyek'], correct:2, explain:'AI Code Review adalah feedback loop paling berharga untuk self-taught engineer. Jangan lewatkan proses perbaikan dari feedback tersebut.'}
+    ]
+  }
   ],
 
 // ════════════════════════════════════════════════════
@@ -878,6 +1507,7 @@ const TOPICS = {
     {
       id:'f2t01', title:'Software Design Principles (SOLID)',
       why:'Prinsip ini adalah perbedaan antara code yang bisa diubah dan code yang harus dibuang.',
+      resource:{type:'🎥',name:'Uncle Bob — SOLID Principles',url:'https://www.youtube.com/watch?v=zHiWqnTWsn4'},
       subtopics:[
         {t:'Single Responsibility Principle (SRP)', g:'Bisa identify class/function yang violate SRP dan refactor ke multiple smaller units.'},
         {t:'Open/Closed Principle (OCP)', g:'Bisa design class yang extensible tanpa modifikasi — gunakan abstraction.'},
@@ -902,11 +1532,18 @@ const TOPICS = {
         {q:'Kenapa kode berikut melanggar Liskov Substitution Principle?\n\nclass Bird { fly() {} }\nclass Penguin extends Bird { fly() { throw Error("Penguins can\'t fly!") } }',
           opts:['Penguin tidak punya method fly','Kode ini benar, tidak ada pelanggaran','Code yang expect Bird.fly() akan crash jika diberi Penguin — subclass tidak bisa di-substitute ke parent tanpa breaking behavior','Method naming tidak sesuai convention'],correct:2,
           explain:'LSP: code yang menggunakan Bird harus bisa menggunakan Penguin tanpa tahu bedanya. Jika function terima Bird dan panggil .fly(), akan crash untuk Penguin. Ini design yang salah — Penguin bukan Bird dalam konteks "bisa terbang". Solusi: gunakan interface FlyingBird terpisah.'},
+        {q:'Sebuah class UserManager punya method: saveUser(), sendEmail(), generateReport(). Prinsip SOLID mana yang dilanggar?',
+          opts:['Open-Closed Principle','Single Responsibility Principle — class ini punya 3 alasan untuk berubah (data, email, reporting)','Liskov Substitution','Interface Segregation'],correct:1,
+          explain:'SRP: class harus punya SATU alasan untuk berubah. UserManager ini akan berubah jika: logika save berubah, format email berubah, ATAU template report berubah. Solusi: pisah menjadi UserRepository, EmailService, ReportGenerator.'},
+        {q:'Dependency Inversion Principle: apa artinya secara praktis dalam code?',
+          opts:['Jangan import library external','High-level module depend pada abstraksi (interface), bukan implementasi konkret — sehingga implementasi bisa diganti tanpa mengubah high-level module','Low-level modules harus dihapus','Semua fungsi harus abstract'],correct:1,
+          explain:'Contoh: OrderService tidak depend langsung pada MySQLDatabase, tapi pada interface DatabasePort. Kamu bisa swap MySQL ke PostgreSQL atau mock untuk testing tanpa mengubah OrderService. Ini fundamental untuk testability dan flexibility.'},
       ]
     },
     {
       id:'f2t02', title:'Design Patterns Essentials',
       why:'Design patterns adalah vocabulary untuk diskusi arsitektur. Tapi penting: paham kapan TIDAK pakai, bukan cuma kapan pakai.',
+      resource:{type:'📖',name:'Refactoring Guru — Design Patterns',url:'https://refactoring.guru/design-patterns'},
       subtopics:[
         {t:'Creational: Factory Method', g:'Bisa implement Factory untuk create objects tanpa specify concrete class di client.'},
         {t:'Creational: Singleton (+ kenapa harus hati-hati)', g:'Bisa implementasi thread-safe Singleton dan jelaskan kenapa ia bisa jadi anti-pattern.'},
@@ -931,11 +1568,18 @@ const TOPICS = {
         {q:'Strategy pattern menyelesaikan masalah apa?',
           opts:['Cara membuat object yang kompleks','Mengganti if-else / switch yang panjang dengan kumpulan strategy objects yang bisa di-swap runtime tanpa ubah client code','Cara menghubungkan dua interface yang incompatible','Cara membuat satu instance saja'],correct:1,
           explain:'Tanpa Strategy: if payment=="credit" ... elif payment=="gopay" ... elif payment=="transfer" ... — setiap payment baru = modifikasi function. Dengan Strategy: buat interface PaymentStrategy, tiap payment implement interface-nya. Client tinggal call strategy.pay(). Tambah payment baru = tambah class baru, tidak ubah existing code (OCP).'},
+        {q:'Kamu punya class DatabaseConnection dan ingin memastikan hanya ada SATU instance di seluruh aplikasi. Pattern mana?',
+          opts:['Factory','Singleton — memastikan hanya satu instance dan menyediakan global access point','Observer','Strategy'],correct:1,
+          explain:'Singleton: private constructor + static method getInstance(). Berguna untuk resource yang mahal dan shared: DB connections, config, logger. Caveat: bisa menyulitkan testing (global state). Alternatif modern: Dependency Injection.'},
+        {q:'Adapter pattern digunakan ketika...',
+          opts:['Kamu ingin cache data','Kamu punya interface yang tidak kompatibel dan perlu translator di antaranya agar bisa bekerja sama','Kamu ingin membuat object secara lazy','Kamu ingin menambah behavior pada runtime'],correct:1,
+          explain:'Adapter = translator antara 2 interface yang tidak kompatibel. Contoh: library payment punya method charge(), tapi kode kamu expect pay(). Adapter class wraps library dan expose pay() yang internally panggil charge(). Tidak perlu ubah kedua sisi.'},
       ]
     },
     {
       id:'f2t03', title:'Testing: Unit, Integration & TDD',
       why:'Code tanpa test adalah code yang tidak bisa diubah dengan aman. Test adalah dokumentasi yang bisa dieksekusi.',
+      resource:{type:'📖',name:'Martin Fowler — Test Pyramid',url:'https://martinfowler.com/articles/practical-test-pyramid.html'},
       subtopics:[
         {t:'Unit Testing Fundamentals: Arrange-Act-Assert', g:'Bisa tulis unit test yang isolated, fast, dan deterministic.'},
         {t:'Mocking & Test Doubles', g:'Bisa buat mock untuk external dependency (database, API) agar test bisa berjalan tanpa dependency nyata.'},
@@ -960,11 +1604,18 @@ const TOPICS = {
         {q:'Kamu punya unit test dengan coverage 95%. Apakah ini membuktikan code kamu bebas bug?',
           opts:['Ya, 95% coverage sangat tinggi dan hampir pasti bebas bug','Tidak — coverage mengukur berapa persen baris/branch yang dieksekusi oleh test, bukan kebenaran logic. Test bisa salah assertion atau miss edge cases','Ya, tapi perlu di-review dulu','Tidak, perlu 100% untuk bug-free'],correct:1,
           explain:'Coverage = "seberapa banyak code yang dijalankan oleh test." Tapi bisa: (1) test run code tapi tidak assert apapun — coverage tinggi, test tidak berguna. (2) Test miss edge cases — input boundary, null values. (3) Test logic salah. Code quality dinilai dari test yang meaningful, bukan angka coverage.'},
+        {q:'Test Pyramid: banyak unit tests di bawah, sedikit E2E di atas. Kenapa bukan sebaliknya?',
+          opts:['Unit tests lebih mudah ditulis','Unit tests cepat, murah, dan pinpoint masalah. E2E tests lambat, flaky, dan sulit debug. Terlalu banyak E2E = test suite lambat dan sering fail tanpa alasan jelas','E2E tidak berguna','Unit tests test lebih banyak kode'],correct:1,
+          explain:'Unit: ms, isolated, precise. Integration: detik, beberapa komponen. E2E: menit, seluruh system. Ice cream cone anti-pattern (banyak E2E, sedikit unit) = slow CI, flaky tests, sulit maintain. Pyramid = fast feedback + comprehensive coverage.'},
+        {q:'Apa itu code coverage dan kenapa 100% coverage BUKAN jaminan kode bebas bug?',
+          opts:['Code coverage tidak berguna','Coverage mengukur BERAPA BANYAK baris/branch yang dieksekusi oleh tests, bukan KUALITAS assertions. 100% coverage dengan assertions lemah tetap bisa punya bug','100% coverage artinya semua bug ditemukan','Coverage hanya untuk unit tests'],correct:1,
+          explain:'Coverage = kode ini dijalankan oleh test, bukan kode ini benar. Test bisa execute semua baris tanpa assert yang bermakna. Contoh: test yang hanya panggil fungsi tanpa cek return value = 100% coverage, 0% verification. Target: 80%+ coverage DENGAN meaningful assertions.'},
       ]
     },
     {
       id:'f2t04', title:'HTTP & REST API Design',
       why:'REST API adalah bahasa komunikasi antar services. Design yang buruk = developer experience yang buruk = bugs yang tersembunyi.',
+      resource:{type:'📖',name:'REST API Design Best Practices',url:'https://restfulapi.net/'},
       subtopics:[
         {t:'HTTP Deep Dive: Methods Semantics', g:'Bisa jelaskan perbedaan idempotent (GET, PUT, DELETE) vs non-idempotent (POST) dan implikasinya.'},
         {t:'REST Constraints & Resource Modeling', g:'Bisa design URL structure yang mengikuti REST resource model (noun, tidak verb).'},
@@ -989,11 +1640,18 @@ const TOPICS = {
         {q:'Mengapa GET request harus idempotent dan tidak punya side effects?',
           opts:['GET didesain untuk kecepatan saja','Karena browser, proxy, dan CDN akan cache GET requests. Jika GET punya side effect, caching akan menyebabkan side effect tidak terjadi atau terjadi lebih dari sekali — behavior tidak predictable','Karena GET tidak bisa punya body','GET tidak aman untuk sensitive data'],correct:1,
           explain:'Idempotent = memanggil berkali-kali = hasil sama. GET cached by browsers, CDN, proxy. Jika GET /users/deactivate?id=1 deactivate user — setelah pertama kali, response dari cache, user tidak ter-deactivate lagi. Behavior inconsistent. GET = "read only, no state change."'},
+        {q:'Endpoint /api/users/123/orders — ini menunjukkan relationship pattern apa?',
+          opts:['Flat structure','Nested/hierarchical resource — orders milik user 123, menunjukkan parent-child relationship via URL path','Query parameter','Versioned API'],correct:1,
+          explain:'Nested resources menunjukkan ownership: /users/123/orders = semua orders milik user 123. Best practice: max 2 level nesting. Lebih dari itu, gunakan query params atau separate endpoint.'},
+        {q:'Apa itu API versioning dan kenapa penting?',
+          opts:['Tidak penting untuk API kecil','Versioning (/api/v1/users vs /api/v2/users) memungkinkan perubahan breaking tanpa merusak client yang sudah ada — backward compatibility','Hanya untuk REST, bukan GraphQL','Versioning memperlambat API'],correct:1,
+          explain:'Tanpa versioning: setiap perubahan response format bisa break semua client. Dengan v1/v2: client lama tetap pakai v1, client baru pakai v2. Ini professional API management.'},
       ]
     },
     {
       id:'f2t05', title:'Authentication & API Security',
       why:'Security yang bocor = kepercayaan yang hilang. Dan biasanya bukan yang paling canggih yang jadi masalah — tapi yang paling basic.',
+      resource:{type:'🎥',name:'Fireship — Session vs Token Auth',url:'https://www.youtube.com/watch?v=UBUNrFtufWo'},
       subtopics:[
         {t:'Session-based vs Token-based Auth', g:'Bisa jelaskan flow dan trade-off keduanya, termasuk stateless vs stateful.'},
         {t:'JWT: Structure, Signing, Verification', g:'Bisa decode JWT tanpa library dan explain setiap bagian (header.payload.signature).'},
@@ -1018,11 +1676,18 @@ const TOPICS = {
         {q:'SQL Injection terjadi karena...',
           opts:['Database terlalu lambat','User input langsung di-concatenate ke SQL query tanpa sanitasi — attacker bisa inject SQL code','API tidak pakai HTTPS','Database password lemah'],correct:1,
           explain:'Contoh query rentan: SELECT * FROM users WHERE name = [input user]. Tanpa sanitasi, attacker inject: OR 1=1 untuk return semua users. Fix: parameterized query / prepared statement dengan placeholder — driver handle escaping otomatis, SQL code tidak bisa di-inject.'},
+        {q:'SQL Injection attack: apa yang terjadi jika user input \' OR 1=1 -- ke form login?',
+          opts:['Tidak ada masalah','Query berubah menjadi SELECT * FROM users WHERE name=\'\' OR 1=1 -- yang return semua users — bypass authentication','Database crash','Input ditolak otomatis'],correct:1,
+          explain:'\' menutup string literal. OR 1=1 membuat WHERE selalu true. -- comment out sisa query. Hasilnya: SELECT semua users tanpa password check. Solusi: SELALU gunakan parameterized queries, NEVER string concatenation.'},
+        {q:'Rate limiting pada API berfungsi untuk...',
+          opts:['Mempercepat API','Mencegah abuse/DDoS dengan membatasi jumlah request per client per waktu — misal max 100 req/menit per API key','Mengenkripsi data','Mengurangi latency'],correct:1,
+          explain:'Tanpa rate limiting: satu client bisa kirim jutaan request → server overload, denial of service untuk semua user. Response 429 Too Many Requests jika limit terlampaui. Essential untuk API security dan stability.'},
       ]
     },
     {
       id:'f2t06', title:'Database Design & Advanced SQL',
       why:'Schema yang buruk adalah technical debt yang paling mahal — dan paling susah diperbaiki setelah production.',
+      resource:{type:'📝',name:'Use The Index, Luke — SQL Indexing',url:'https://use-the-index-luke.com/'},
       subtopics:[
         {t:'Normalization: 1NF, 2NF, 3NF', g:'Bisa identifikasi normalization violation dan lakukan normalisasi sampai 3NF.'},
         {t:'Indexes: B-Tree, Types, Index Strategy', g:'Bisa buat composite index dan explain kenapa column order penting.'},
@@ -1047,11 +1712,18 @@ const TOPICS = {
         {q:'Apa itu N+1 Query Problem dalam ORM?',
           opts:['Query yang terlalu kompleks dengan banyak JOIN','Mengambil list N users dengan 1 query, lalu untuk tiap user fire 1 query lagi untuk ambil posts-nya → total N+1 queries. Solusi: eager loading atau JOIN','Database tidak bisa handle lebih dari N+1 connection','Query yang dieksekusi N kali lebih lambat'],correct:1,
           explain:'Contoh: User.all() → 1 query. Lalu for user in users: user.posts → N queries (1 per user). Untuk 100 users = 101 queries ke database! Solusi: User.all().prefetch_related("posts") atau JOIN query → 1-2 queries saja. N+1 sering jadi performance killer tersembunyi.'},
+        {q:'EXPLAIN output menunjukkan "Seq Scan" pada tabel dengan 1 juta baris. Apa artinya dan apa solusinya?',
+          opts:['Seq Scan bagus untuk performa','Sequential Scan = database membaca SEMUA baris satu per satu — O(n). Solusi: buat index pada kolom yang digunakan di WHERE clause untuk enable Index Scan O(log n)','Seq Scan berarti query sudah optimal','Hapus tabel dan buat ulang'],correct:1,
+          explain:'Seq Scan di tabel besar = performance killer. Database baca 1 juta baris walau hanya butuh 1. Dengan B-tree index: database langsung jump ke posisi yang tepat → orders of magnitude lebih cepat. EXPLAIN ANALYZE adalah tool wajib untuk diagnosa query lambat.'},
+        {q:'Apa yang dimaksud ACID pada database transactions?',
+          opts:['Jenis database baru','Atomicity (semua atau tidak sama sekali), Consistency (data valid), Isolation (transaksi tidak saling ganggu), Durability (data tersimpan permanen setelah commit)','Algoritma sorting','Cara mengenkripsi data'],correct:1,
+          explain:'A: transfer bank debit+kredit harus both succeed atau both rollback. C: constraint tetap terpenuhi (saldo tidak negatif). I: dua transfer bersamaan tidak corrupt data. D: setelah commit, data survive bahkan jika server crash. Ini guarantee yang membuat RDBMS reliable untuk critical data.'},
       ]
     },
     {
       id:'f2t07', title:'Concurrency & Async Programming',
       why:'Modern apps are concurrent by nature. Race conditions dan deadlocks adalah silent killers yang sulit di-debug.',
+      resource:{type:'🎥',name:'Rob Pike — Concurrency is not Parallelism',url:'https://www.youtube.com/watch?v=oV9rvDllKEg'},
       subtopics:[
         {t:'Concurrency vs Parallelism', g:'Bisa jelaskan perbedaan keduanya dengan analogi konkret (chef masak vs restoran dengan banyak chef).'},
         {t:'Thread Safety & Race Conditions', g:'Bisa identify race condition dalam code dan reproduce dengan sederhana.'},
@@ -1076,11 +1748,18 @@ const TOPICS = {
         {q:'Deadlock terjadi ketika...',
           opts:['Program terlalu banyak menggunakan memory','Thread A menunggu lock yang dipegang Thread B, sementara Thread B menunggu lock yang dipegang Thread A — circular wait, kedua thread stuck selamanya','Terlalu banyak threads berjalan bersamaan','Lock tidak di-release setelah operasi selesai'],correct:1,
           explain:'4 kondisi Coffman untuk deadlock: (1) Mutual exclusion, (2) Hold and wait, (3) No preemption, (4) Circular wait. Semua harus terpenuhi. Solusi: lock ordering (selalu acquire locks dalam urutan yang sama), timeout, atau lock-free programming. Deadlock adalah bug yang paling susah di-reproduce dan di-debug.'},
+        {q:'Python GIL (Global Interpreter Lock) menyebabkan...',
+          opts:['Python tidak bisa multithreading sama sekali','CPU-bound Python threads tidak bisa parallel — GIL hanya allow satu thread execute Python bytecode. I/O-bound threads masih benefit karena GIL dilepas saat I/O wait','Python lebih cepat dari C','GIL membuat Python thread-safe secara otomatis'],correct:1,
+          explain:'GIL: hanya satu thread execute Python bytecode pada satu waktu. CPU-bound: pakai multiprocessing (separate processes, separate GIL). I/O-bound: threading masih berguna karena GIL dilepas saat wait I/O. Ini kenapa async/await atau multiprocessing lebih umum di Python untuk concurrency.'},
+        {q:'Apa perbedaan antara concurrency dan parallelism?',
+          opts:['Keduanya sama','Concurrency: mengelola banyak task sekaligus (bisa bergantian di 1 CPU). Parallelism: mengeksekusi banyak task secara bersamaan (butuh multiple CPUs). Concurrency adalah tentang structure, parallelism tentang execution','Concurrency lebih cepat','Parallelism tidak membutuhkan hardware khusus'],correct:1,
+          explain:'Analogi: Concurrency = 1 chef yang masak 3 hidangan bergantian (bisa switch saat menunggu oven). Parallelism = 3 chef yang masak 3 hidangan bersamaan. Program bisa concurrent tapi tidak parallel (1 CPU, task switching). Go goroutines: concurrent by design, parallel saat ada multiple CPUs.'},
       ]
     },
     {
       id:'f2t08', title:'Backend Architecture: Layered & Clean',
       why:'Arsitektur yang baik memungkinkan codebase berkembang tanpa chaos. Tanpa ini, setiap fitur baru = pain.',
+      resource:{type:'🎥',name:'Uncle Bob — Clean Architecture',url:'https://www.youtube.com/watch?v=o_TH-Y78tt4'},
       subtopics:[
         {t:'Layered Architecture: Presentation → Business → Data', g:'Bisa jelaskan dependency direction yang benar: layer atas depend pada layer bawah, tidak sebaliknya.'},
         {t:'Repository Pattern', g:'Bisa implement Repository untuk abstract database access dari business logic.'},
@@ -1105,11 +1784,18 @@ const TOPICS = {
         {q:'Kenapa secrets (database password, API key) tidak boleh di-hardcode dalam source code?',
           opts:['Membuat code lebih lambat','Source code di-commit ke Git — siapapun dengan akses repo (termasuk ex-employee) bisa lihat secrets. Jika repo public = exposed ke dunia','Secrets terlalu panjang untuk ditulis','Database tidak terima hardcoded password'],correct:1,
           explain:'Git history tidak bisa dihapus dengan mudah. Sekali secret masuk ke commit, ia ada di history selamanya (tanpa force-push yang risky). Solution: environment variables, secret manager (AWS Secrets Manager, HashiCorp Vault). .env file tidak di-commit (masuk .gitignore). Ini standar minimal setiap professional project.'},
+        {q:'Dependency Injection: kenapa inject dependency via constructor lebih baik dari membuat instance di dalam class?',
+          opts:['Constructor injection lebih cepat','Membuat class testable — bisa inject mock dependency untuk testing, dan membuat dependency eksplisit (terlihat jelas apa yang class butuhkan)','Tidak ada bedanya','Constructor injection menggunakan less memory'],correct:1,
+          explain:'Tanpa DI: class UserService { db = new PostgresDB() } — hardcoded, tidak bisa mock, tidak bisa swap. Dengan DI: class UserService(db: IDatabase) — inject apa saja yang implement IDatabase. Testing: inject MockDB. Production: inject PostgresDB. Dependency eksplisit = kode lebih jelas.'},
+        {q:'Kenapa business logic TIDAK BOLEH ada di Handler/Controller layer?',
+          opts:['Handler terlalu lambat untuk business logic','Handler ter-couple ke HTTP protocol — business logic di sini tidak bisa di-reuse untuk CLI, gRPC, atau message queue consumer. Dan sulit di-test tanpa HTTP request/response','Business logic tidak penting','Handler tidak bisa import library'],correct:1,
+          explain:'Handler = adapter ke HTTP. Kalau business logic di handler: (1) tidak reusable (butuh business logic yang sama dari queue consumer? tulis ulang), (2) test butuh mock HTTP request, (3) handler jadi fat dan susah dibaca. Service layer: pure logic, reusable, easy to test.'},
       ]
     },
     {
       id:'f2t09', title:'Distributed Systems Fundamentals',
       why:'Ini yang bikin kamu berpikir seperti senior engineer. Semua sistem modern adalah distributed. Ignorance di sini = design yang naif.',
+      resource:{type:'📖',name:'Martin Kleppmann — Designing Data-Intensive Apps',url:'https://dataintensive.net/'},
       subtopics:[
         {t:'CAP Theorem', g:'Bisa jelaskan CAP dengan contoh sistem nyata: MongoDB, Cassandra, PostgreSQL pilih trade-off apa.'},
         {t:'Consistency Models: Strong vs Eventual', g:'Bisa jelaskan kapan eventual consistency acceptable dan kapan tidak (banking vs social feed).'},
@@ -1134,11 +1820,18 @@ const TOPICS = {
         {q:'Fallacy "The network is reliable" — apa implikasinya untuk system design?',
           opts:['Tidak ada implikasinya, network modern sangat reliable','Kamu harus design sistem yang handle: packet loss, timeout, partial failure, latency spike. Setiap network call harus punya timeout, retry dengan backoff, dan circuit breaker','Gunakan UDP untuk reliability','Selalu pakai local disk, hindari network'],correct:1,
           explain:'Network calls AKAN gagal — bukan "jika", tapi "kapan". Tanpa design untuk failure: satu service timeout → request hang → thread pool exhausted → cascading failure → seluruh sistem down. Design: timeout pada setiap call, retry dengan exponential backoff + jitter, circuit breaker untuk stop retry ke service yang gagal.'},
+        {q:'Eventual consistency: kenapa Instagram feed bisa pakai eventual consistency tapi bank transfer tidak?',
+          opts:['Instagram tidak peduli data','Feed: jika post muncul 2 detik telat, tidak ada kerugian finansial. Bank: jika saldo inconsistent walau 1 detik, bisa terjadi double-spend. Cost of inconsistency menentukan consistency model yang dibutuhkan','Eventual consistency selalu lebih cepat','Bank tidak pakai distributed system'],correct:1,
+          explain:'Trade-off: strong consistency = higher latency (butuh coordination antar nodes). Eventual consistency = lower latency tapi data bisa stale sesaat. Untuk banking: inconsistency = uang hilang/duplikat = tidak acceptable. Untuk social feed: post muncul 2 detik telat = nobody cares. Pilih berdasarkan business impact.'},
+        {q:'Leader-Follower replication: apa yang terjadi jika leader node crash?',
+          opts:['Semua data hilang','Follower harus dipromosikan menjadi leader baru (failover). Data yang belum di-replicate ke follower bisa hilang. Ini trade-off antara consistency dan availability','Sistem otomatis buat leader baru tanpa data loss','Follower crash juga'],correct:1,
+          explain:'Failover: detect leader down → pilih follower dengan data paling up-to-date → promote jadi leader. Risiko: writes yang sudah diterima leader tapi belum replicated ke follower = data loss. Solusi: synchronous replication (slower, safer) atau accept potential data loss (faster, riskier). Consensus protocols (Raft, Paxos) automate ini.'},
       ]
     },
     {
       id:'f2t10', title:'Observability: Logging, Metrics & Monitoring',
       why:'Kamu tidak bisa fix apa yang kamu tidak bisa lihat. Observability adalah superpower di production.',
+      resource:{type:'📖',name:'Google SRE Book — Monitoring',url:'https://sre.google/sre-book/monitoring-distributed-systems/'},
       subtopics:[
         {t:'Structured Logging vs Unstructured', g:'Bisa implement structured logging (JSON) dengan fields: level, timestamp, trace_id, service.'},
         {t:'The Three Pillars: Logs, Metrics, Traces', g:'Bisa jelaskan kapan pakai logs, kapan metrics, kapan distributed tracing.'},
@@ -1163,9 +1856,281 @@ const TOPICS = {
         {q:'Kapan Distributed Tracing lebih berguna dari Logs biasa?',
           opts:['Selalu — traces lebih baik dari logs','Ketika request melintasi banyak services dan kamu perlu trace end-to-end journey: berapa lama di service A, B, C, dan di mana bottleneck-nya','Hanya untuk error debugging','Hanya untuk performance monitoring'],correct:1,
           explain:'Logs per service: tahu apa yang terjadi di service A, tapi tidak tahu korelasinya dengan service B dan C. Distributed trace: satu trace ID mengikuti request melewati semua services — visualisasi waterfall menunjukkan: request masuk API (10ms) → call auth service (5ms) → call DB (500ms! bottleneck!) → response. Tanpa trace, sulit identify bottleneck di microservices.'},
+        {q:'RED Method (Rate, Errors, Duration) — kenapa ketiga metrics ini cukup sebagai starting point?',
+          opts:['Karena hanya ada 3 jenis masalah','Rate = throughput (load). Errors = correctness. Duration = performance. Ketiga dimensi ini cover hampir semua masalah: traffic spike (rate), bug/downtime (errors), slowness (duration)','RED lebih mudah diingat','RED adalah satu-satunya framework monitoring'],correct:1,
+          explain:'Rate: apakah traffic normal? Spike bisa indicate viral moment atau DDoS. Errors: apakah error rate naik? 0.1% → 5% = something broke. Duration: apakah p50/p99 latency naik? Database slow? Ketiga metrics ini memberikan overview kesehatan service yang komprehensif sebagai first layer.'},
+        {q:'Alert yang terlalu sensitif (alert pada setiap single error) menyebabkan masalah apa?',
+          opts:['Sistem lebih aman','Alert fatigue — engineer menjadi terbiasa dengan false positives dan mulai ignore alerts, termasuk yang sungguhan critical','Monitoring tool crash','Tidak ada masalah'],correct:1,
+          explain:'Too many alerts = noise. Engineer get paged 50x/day for non-issues → start ignoring → real outage alert ignored → prolonged downtime. Fix: alert on sustained degradation (error rate > 5% for 5 min), not single events. Every alert should be actionable — "apa yang harus saya lakukan SEKARANG?"'},
       ]
     },
+    {
+id:'f2gate', title:'🏗️ Capstone Project: RESTful API + Database',
+    why:'Ini adalah simulasi pekerjaan Backend Engineer di dunia nyata.',
+    resource:{type:'📝',name:'Project Guidelines',url:'#'},
+    subtopics:[
+      {t:'Authentication & Authorization', g:'Implementasi JWT atau Session-based auth dengan role (Admin/User).'},
+      {t:'CRUD Operations', g:'Minimal 3 entitas berelasi (misal: User, Product, Order).'},
+      {t:'Database Design & Migrations', g:'Skema database yang dinormalisasi dengan index yang tepat.'},
+      {t:'Layered Architecture', g:'Pemisahan Handler, Service, dan Repository.'},
+      {t:'Automated Testing', g:'Minimal 70% test coverage (unit test + integration test).'}
+    ],
+    checklist:[
+      'API memiliki dokumentasi lengkap (Swagger/Postman collection)',
+      'Password di-hash (misal menggunakan bcrypt) sebelum disimpan ke DB',
+      'Secrets/credentials disimpan di environment variables, tidak di-commit ke Git',
+      'Test suite bisa dijalankan dengan satu perintah dan pass semua',
+      'Sudah melakukan AI Code Review dan mendapat skor minimal 8/10'
+    ],
+    quiz:[
+      {q:'Apa prinsip utama saat menyimpan password user ke database?', opts:['Simpan dalam plain text agar mudah di-recover','Gunakan Base64 encoding','Gunakan algoritma Hashing satu arah yang lambat (seperti bcrypt/Argon2) ditambah dengan Salt yang unik per user','Gunakan enkripsi simetris (AES)'], correct:2, explain:'Hashing satu arah memastikan admin DB sekalipun tidak tahu password asli. Salt unik mencegah serangan Rainbow Table. Algoritma lambat mencegah brute-force.'},
+      {q:'Mengapa memisahkan Layer (Handler, Service, Repository) sangat ditekankan di project ini?', opts:['Membuat kode terlihat lebih rumit','Memisahkan concerns: Handler urus HTTP, Service urus bisnis logic murni, Repo urus DB. Ini membuat Service mudah di-test tanpa butuh koneksi DB atau HTTP request nyata','Karena itu aturan dari framework','Mengurangi jumlah file'], correct:1, explain:'Testability dan Maintainability. Business logic yang terikat kuat (coupled) dengan detail HTTP sangat sulit untuk dipelihara dalam jangka panjang.'},
+      {q:'Jika terjadi error di server saat memproses request, apa HTTP status code yang seharusnya dikembalikan?', opts:['200 OK dengan body berisi "error: true"','404 Not Found','500 Internal Server Error','400 Bad Request'], correct:2, explain:'500 berarti "Salah kami (server)". 400 berarti "Salah kamu (client), perbaiki requestmu". 200 untuk error adalah anti-pattern GraphQL yang jangan dipakai di REST.'},
+      {q:'Apa tujuan utama dari Database Migrations?', opts:['Memindahkan data ke server lain','Menjadikan skema database (tabel, kolom) tereplikasi dalam kode (version controlled) sehingga environment tim tersinkronisasi','Menghapus data lama','Mempercepat query database'], correct:1, explain:'Tanpa migration script, perubahan database (tambah kolom/tabel) harus dilakukan manual via SQL console. Jika ada anggota tim lain, sistem mereka akan error.'},
+      {q:'Kapan Integration Test lebih penting daripada Unit Test dalam konteks API?', opts:['Saat menguji algoritma matematika yang kompleks','Saat ingin memvalidasi bahwa query database benar-benar berjalan di database engine sungguhan dan mereturn data yang sesuai schema','Saat ingin mengecek sintaks bahasa','Saat tidak ada waktu untuk Unit Test'], correct:1, explain:'Repository layer sebaiknya di-test menggunakan Integration Test (dengan test DB/Testcontainers), karena Unit Test (mocking DB) tidak bisa memvalidasi kebenaran SQL query.'}
+    ]
+  }
+  ],
+  3: [
+    {
+      id:'f3t01', title:'System Design Fundamentals',
+      why:'Bisa coding saja tidak cukup. Kamu harus bisa merancang arsitektur yang scalable.',
+      resource:{type:'📖',name:'System Design Primer',url:'https://github.com/donnemartin/system-design-primer'},
+      subtopics:[
+        {t:'Capacity Estimation', g:'Bisa mengestimasi kebutuhan storage, bandwidth, dan compute berdasarkan daily active users (DAU).'},
+        {t:'Trade-offs', g:'Bisa menimbang pro-kontra antara latency vs throughput, consistency vs availability.'},
+        {t:'API Design (REST, gRPC, GraphQL)', g:'Bisa memilih teknologi komunikasi antar service yang tepat.'},
+        {t:'Load Balancing', g:'Paham L4 vs L7 load balancer dan berbagai algoritma routing.'},
+        {t:'Data Partitioning / Sharding', g:'Bisa merancang skema partisi untuk menghindari hotspot.'}
+      ],
+      checklist:[
+        'Bisa melakukan back-of-the-envelope calculations untuk design system',
+        'Paham kapan harus mengorbankan consistency demi availability',
+        'Bisa mendesain API yang idempotent',
+        'Tahu kapan menggunakan gRPC vs REST',
+        'Paham strategi sharding dan resikonya (misal: cross-shard joins)'
+      ],
+      quiz:[
+        {q:'Jika sistem harus selalu tersedia (Highly Available) walau ada network partition, apa yang harus dikorbankan menurut CAP theorem?', opts:['Latency','Consistency','Throughput','Security'], correct:1, explain:'CAP Theorem menyatakan saat terjadi Partition (P), sistem hanya bisa memilih Availability (A) atau Consistency (C). Jika memilih Available, data yang dibaca mungkin usang (stale).'},
+        {q:'Kapan GraphQL lebih cocok dibanding REST?', opts:['Untuk komunikasi server-to-server yang butuh latency sangat rendah','Ketika client butuh fleksibilitas mengambil data dari banyak resource dalam satu request','Untuk mengunggah file besar','Saat tidak ingin menggunakan schema'], correct:1, explain:'GraphQL menuntaskan masalah over-fetching dan under-fetching, sangat berguna untuk client mobile/web yang butuh efisiensi request. Untuk server-to-server latency rendah, gRPC lebih baik.'},
+        {q:'Dalam Load Balancing, apa itu "Sticky Session"?', opts:['Session yang disimpan di database','Request dari user yang sama selalu diarahkan ke server yang sama','Session yang tidak pernah expired','Error saat memproses session'], correct:1, explain:'Sticky session berguna jika server menyimpan state lokal. Namun ini anti-pattern di arsitektur modern karena menyulitkan scaling dan failover. Solusi modern: stateless server.'},
+        {q:'Jika database di-shard berdasarkan UserID (Hash sharding), apa masalah utama yang bisa muncul?', opts:['Query yang mencari data lintas user menjadi sangat lambat','ID user tidak bisa bertambah','Data akan hilang','Tidak bisa menggunakan index'], correct:0, explain:'Hash sharding mendistribusikan data secara merata, tapi scatter-gather queries (misal: "cari semua user dengan umur 20") harus melakukan full scan ke semua shard.'},
+        {q:'Apa kegunaan utama dari Consistent Hashing?', opts:['Menghindari password hash collision','Meminimalkan perpindahan data antar node saat server baru ditambahkan atau dihapus','Membuat hashing lebih cepat','Memastikan semua hash unik'], correct:1, explain:'Dengan hashing biasa (key % N), jika N (jumlah server) berubah, hampir semua key berpindah server. Consistent hashing menyelesaikan ini, hanya key di sekitar server yang berubah yang dipindahkan.'}
+      ]
+    },
+    {
+      id:'f3t02', title:'Caching Strategies',
+      why:'Caching adalah kunci utama scaling sistem read-heavy.',
+      resource:{type:'📖',name:'AWS Caching Best Practices',url:'https://aws.amazon.com/caching/best-practices/'},
+      subtopics:[
+        {t:'Cache Aside, Read-Through, Write-Through', g:'Bisa implementasi berbagai pattern akses cache.'},
+        {t:'Cache Eviction (LRU, LFU, TTL)', g:'Paham cara cache membuang data saat memori penuh.'},
+        {t:'Cache Invalidation', g:'Paham tantangan utama menjaga cache tetap sinkron dengan database.'},
+        {t:'Distributed Caching (Redis/Memcached)', g:'Bisa menggunakan Redis untuk caching terpusat.'},
+        {t:'CDN (Content Delivery Network)', g:'Paham cara kerja edge caching untuk aset statis.'}
+      ],
+      checklist:[
+        'Bisa implementasi Cache-Aside pattern di aplikasi backend',
+        'Mengerti masalah Cache Stampede (Thundering Herd) dan cara mencegahnya',
+        'Tahu cara mensetup TTL yang optimal',
+        'Bisa membedakan use case Redis vs in-memory lokal',
+        'Paham strategi Cache Invalidation (seperti versioning/hashing)'
+      ],
+      quiz:[
+        {q:'Apa itu Cache Stampede (Thundering Herd)?', opts:['Server cache crash karena kehabisan memory','Ribuan request datang bersamaan saat sebuah cache expired, membanjiri database','Data cache terhapus secara tidak sengaja','Algoritma LRU yang berjalan terlalu lambat'], correct:1, explain:'Saat cache key populer expired, semua request serentak melihat "cache miss" dan semuanya menembak database. Solusi: Lock/Mutex saat regenerate cache, atau background refresh sebelum expired.'},
+        {q:'Manakah pola yang paling umum dimana aplikasi mengecek cache dulu, dan jika miss, aplikasi mengambil dari DB lalu menyimpannya ke cache?', opts:['Write-Through','Read-Through','Cache-Aside','Write-Behind'], correct:2, explain:'Cache-Aside (Lazy Loading): Aplikasi yang bertanggung jawab mengelola cache. Read-Through: Cache layer sendiri yang mengambil data dari DB secara transparan ke aplikasi.'},
+        {q:'"Ada 2 hal tersulit dalam ilmu komputer: penamaan variabel dan..."', opts:['Mengurutkan data','Menemukan memory leak','Cache invalidation','Off-by-one errors'], correct:2, explain:'Cache invalidation sangat sulit karena memastikan data di cache selalu up-to-date dengan source of truth (DB) melibatkan timing, network failure, dan race conditions.'},
+        {q:'Untuk data yang sangat jarang berubah dan sering dibaca secara global (misalnya gambar, CSS), teknologi apa yang paling tepat?', opts:['Redis','CDN (Content Delivery Network)','Database lokal','Elasticsearch'], correct:1, explain:'CDN menyimpan aset statis di server edge yang tersebar secara geografis, dekat dengan user, mengurangi latency dan beban server origin.'},
+        {q:'Apa yang terjadi jika memori Redis penuh dan policy eviction diset ke "allkeys-lru"?', opts:['Redis menolak write baru','Redis menghapus key yang paling jarang diakses baru-baru ini','Redis menghapus key secara acak','Redis crash'], correct:1, explain:'LRU (Least Recently Used) akan menghapus data yang sudah lama tidak diakses. Ini sangat cocok untuk caching.'}
+      ]
+    },
+    {
+      id:'f3t03', title:'Message Queues & Event-Driven',
+      why:'Asynchronous processing memisahkan sistem, meningkatkan ketahanan dan skalabilitas.',
+      resource:{type:'📖',name:'Kafka vs RabbitMQ',url:'https://www.confluent.io/kafka-vs-rabbitmq/'},
+      subtopics:[
+        {t:'Pub/Sub vs Point-to-Point', g:'Paham perbedaan model pengiriman pesan.'},
+        {t:'Message Brokers (RabbitMQ, Kafka)', g:'Bisa memilih antara message queue tradisional vs event streaming.'},
+        {t:'Idempotency', g:'Bisa merancang consumer yang aman memproses pesan berulang kali.'},
+        {t:'Dead Letter Queues (DLQ)', g:'Bisa menangani pesan yang gagal diproses.'},
+        {t:'Event Sourcing & CQRS', g:'Paham konsep memisahkan read dan write models.'}
+      ],
+      checklist:[
+        'Bisa membedakan use case RabbitMQ vs Apache Kafka',
+        'Bisa membuat worker yang idempotent',
+        'Mengonfigurasi Dead Letter Queue untuk error handling',
+        'Paham masalah "At least once" delivery dan duplicate processing',
+        'Tahu cara scale consumer (Consumer Groups)'
+      ],
+      quiz:[
+        {q:'Dalam sistem message queue dengan jaminan "At-Least-Once Delivery", masalah apa yang harus diantisipasi oleh consumer?', opts:['Pesan hilang','Pesan tiba berurutan','Consumer menerima pesan yang sama lebih dari sekali','Broker crash'], correct:2, explain:'"At-least-once" menjamin pesan tidak hilang, tapi jika terjadi network timeout saat konfirmasi, broker bisa mengirim ulang pesan. Consumer HARUS idempotent (memproses 2x hasilnya sama dengan 1x).'},
+        {q:'Jika pesan gagal diproses setelah diretry berkali-kali, ke mana pesan tersebut sebaiknya dikirim?', opts:['Dibuang (discard)','Disimpan di log lokal','Dead Letter Queue (DLQ)','Dikembalikan ke antrian depan'], correct:2, explain:'DLQ adalah antrian khusus untuk pesan beracun (poison pills) yang terus gagal. Engineer kemudian bisa menganalisis isi DLQ secara manual untuk mencari bug.'},
+        {q:'Apache Kafka berbeda dari RabbitMQ utamanya karena Kafka...', opts:['Hanya mendukung bahasa Java','Menyimpan pesan di disk sebagai log append-only dan tidak menghapusnya langsung saat dibaca','Lebih mudah disetup','Tidak memiliki antrian'], correct:1, explain:'RabbitMQ adalah smart broker/dumb consumer (pesan dihapus saat di-ack). Kafka adalah dumb broker/smart consumer (pesan disimpan di log persisten, consumer melacak offset-nya sendiri).'},
+        {q:'Apa tujuan dari pattern CQRS?', opts:['Mengenkripsi data','Memisahkan database untuk baca (Read) dan tulis (Write)','Menggabungkan microservices menjadi monolith','Mempercepat build CI/CD'], correct:1, explain:'Command Query Responsibility Segregation memisahkan model/database untuk update data (Command) dengan yang untuk baca data (Query), seringkali dihubungkan via events.'},
+        {q:'Sifat operasi di mana f(x) = f(f(x)) disebut apa?', opts:['Atomic','Idempotent','Concurrent','Synchronous'], correct:1, explain:'Idempotency krusial di sistem terdistribusi. Misalnya: "Set status ke PAID" itu idempotent. "Tambahkan saldo $10" BUKAN idempotent (jika dieksekusi 2x, saldo tambah $20).'}
+      ]
+    },
+    {
+      id:'f3t04', title:'Containerization & Orchestration',
+      why:'Menghindari masalah "Works on my machine" dan memudahkan scaling.',
+      resource:{type:'📖',name:'Kubernetes Basics',url:'https://kubernetes.io/docs/tutorials/kubernetes-basics/'},
+      subtopics:[
+        {t:'Docker Fundamentals', g:'Bisa membuat Dockerfile yang optimal dan aman.'},
+        {t:'Docker Compose', g:'Bisa menjalankan multi-container environment lokal.'},
+        {t:'Kubernetes (K8s) Architecture', g:'Paham Pods, Deployments, Services, dan Ingress.'},
+        {t:'Stateless vs Stateful Apps', g:'Tahu cara mengelola persistent data di container.'},
+        {t:'Resource Limits & Health Checks', g:'Bisa mengonfigurasi readiness dan liveness probe.'}
+      ],
+      checklist:[
+        'Bisa membuat multi-stage Dockerfile untuk memperkecil image',
+        'Bisa menjalankan environment lokal penuh dengan docker-compose',
+        'Tahu perbedaan Readiness dan Liveness probe di K8s',
+        'Paham konsep stateless service agar mudah di-scale',
+        'Bisa mendefinisikan CPU dan Memory limits'
+      ],
+      quiz:[
+        {q:'Apa keuntungan utama menggunakan Multi-stage builds di Docker?', opts:['Membuat container berjalan lebih cepat','Menghasilkan Docker image akhir yang jauh lebih kecil dan aman dengan membuang tool build','Memungkinkan menjalankan beberapa OS','Mencegah crash aplikasi'], correct:1, explain:'Multi-stage build memisahkan tahap compile (butuh SDK, source code) dengan tahap runtime. Image akhir hanya berisi binary, mengurangi ukuran image dan attack surface.'},
+        {q:'Di Kubernetes, jika sebuah container stuck/deadlock tapi tidak crash (proses masih berjalan), probe apa yang akan me-restart container tersebut?', opts:['Readiness Probe','Liveness Probe','Startup Probe','Network Probe'], correct:1, explain:'Liveness probe mengecek apakah aplikasi "hidup" (misal: bisa merespon HTTP 200). Jika gagal, K8s akan me-restart Pod. Readiness probe mengecek apakah aplikasi siap menerima traffic.'},
+        {q:'Apa peran dari Kubernetes Service?', opts:['Menjalankan container','Mengeksekusi cron jobs','Menyediakan stable IP address dan load balancing untuk sekelompok Pods yang dinamis','Menyimpan data persisten'], correct:2, explain:'Pod di K8s bersifat fana (ephemeral) dan IP-nya terus berubah. Service memberikan IP statis tunggal dan me-load balance traffic ke Pod-Pod di belakangnya.'},
+        {q:'Mana praktik terbaik dalam membuat Docker image?', opts:['Jalankan aplikasi sebagai user root','Install banyak utility debugging (vim, curl) di production image','Satu proses utama per container','Gunakan tag "latest" di production'], correct:2, explain:'Satu concern/proses per container adalah filosofi dasar Docker. Jika butuh web server dan background worker, pisahkan jadi 2 container.'},
+        {q:'Mengapa aplikasi stateful (misal: database) lebih sulit dikelola di Kubernetes dibanding aplikasi stateless (misal: web server)?', opts:['K8s tidak mendukung database','Karena K8s dapat sewaktu-waktu mematikan/memindahkan Pod; data lokal di dalam Pod akan hilang kecuali menggunakan Persistent Volumes','Database terlalu besar untuk container','Stateless aplikasi tidak butuh network'], correct:1, explain:'Aplikasi stateless tidak menyimpan data sesi/transaksi lokal, bisa dibunuh dan di-restart kapan saja. Stateful butuh attach/detach persistent volume dan penanganan shutdown yang anggun (graceful).'}
+      ]
+    },
+    {
+      id:'f3t05', title:'CI/CD & Infrastructure as Code',
+      why:'Automasi adalah pembeda antara tim medioker dan tim high-performing.',
+      resource:{type:'📖',name:'Terraform vs CloudFormation',url:'https://www.hashicorp.com/resources/terraform-vs-cloudformation'},
+      subtopics:[
+        {t:'Continuous Integration (CI)', g:'Bisa mengonfigurasi pipeline build, test, dan lint otomatis.'},
+        {t:'Continuous Deployment (CD)', g:'Bisa merancang pipeline deployment yang aman (blue/green, canary).'},
+        {t:'Infrastructure as Code (IaC) Basics', g:'Paham konsep Terraform atau CloudFormation.'},
+        {t:'Immutable Infrastructure', g:'Paham kenapa server sebaiknya diganti, bukan di-patch.'},
+        {t:'GitOps', g:'Bisa menjelaskan deklaratif infrastruktur tersimpan di Git.'}
+      ],
+      checklist:[
+        'Bisa membuat GitHub Actions untuk build dan test otomatis',
+        'Paham strategi deployment Canary dan Blue/Green',
+        'Tahu konsep dasar Terraform (state, plan, apply)',
+        'Tidak lagi melakukan perubahan infrastruktur via click-click di AWS Console',
+        'Tahu cara me-rollback deployment yang gagal dengan cepat'
+      ],
+      quiz:[
+        {q:'Dalam strategi deployment, apa itu Canary Release?', opts:['Mendeploy kode di malam hari','Mendeploy fitur baru hanya ke sebagian kecil user (misal 5%), memonitor error, lalu menaikkan persentasenya secara bertahap','Mendeploy ke server terpisah yang tidak terhubung ke internet','Menulis ulang seluruh sistem dari nol'], correct:1, explain:'Analogi burung kenari di tambang batu bara. Jika kode baru punya bug, hanya 5% user yang terkena dampaknya, dan rilis bisa langsung dihentikan/rollback.'},
+        {q:'Apa keuntungan utama Infrastructure as Code (IaC) seperti Terraform?', opts:['Infrastruktur gratis','Versi kontrol, reproduktifitas, dan review untuk infrastruktur; kita bisa me-review perubahan server lewat Pull Request','Kode berjalan lebih cepat','Tidak butuh akun AWS'], correct:1, explain:'IaC membuat pengelolaan server bisa dikerjakan dengan workflow software engineering (Git, Code Review, CI/CD). Menghindari fenomena "snowflake server" (server yang dikonfigurasi manual dan misterius).'},
+        {q:'Apa itu Immutable Infrastructure?', opts:['Server tidak bisa dihapus','Infrastruktur tidak pernah diubah (patched) setelah di-deploy; jika butuh update, hancurkan server lama dan deploy server baru dari image terbaru','Server tidak memiliki IP','Server tanpa firewall'], correct:1, explain:'Mencegah configuration drift. Alih-alih SSH ke server untuk `apt-get upgrade`, kita membuat AMI/Docker image baru yang sudah ter-update, lalu mendeskroksi instance lama.'},
+        {q:'Tujuan utama dari Continuous Integration (CI) adalah...', opts:['Menghemat uang server','Mendeteksi bug secepat mungkin dengan menjalankan automated tests setiap kali kode di-push ke repository','Mendeploy kode ke production','Menghapus kode lama'], correct:1, explain:'CI memastikan bahwa perubahan baru terintegrasi dengan baik ke codebase utama tanpa merusak fungsionalitas yang ada.'},
+        {q:'Dalam Terraform, apa fungsi dari file "State"?', opts:['Menyimpan source code aplikasi','Memetakan resources di dunia nyata dengan konfigurasi yang ada di kode kita','Mengenkripsi password','Sebagai backup database'], correct:1, explain:'State file mencatat apa saja yang sudah dibuat oleh Terraform. Ini krusial agar Terraform tahu apakah harus create, update, atau delete resource di run berikutnya.'}
+      ]
+    },
+    {
+id:'f3gate', title:'🏗️ Capstone Project: High-Scale Distributed Backend',
+    why:'Membuktikan kamu bisa membangun sistem yang tahan banting di bawah tekanan tinggi.',
+    resource:{type:'📝',name:'Project Guidelines',url:'#'},
+    subtopics:[
+      {t:'Microservices / Modular Monolith', g:'Aplikasi terdiri dari minimal 2 service yang saling berkomunikasi.'},
+      {t:'Message Queue Integration', g:'Komunikasi asinkron menggunakan RabbitMQ atau Kafka.'},
+      {t:'Caching Layer', g:'Implementasi Redis untuk menekan beban database secara signifikan.'},
+      {t:'Containerization', g:'Semua service, DB, dan queue bisa dijalankan via satu perintah docker-compose.'},
+      {t:'Load Testing', g:'Sistem sudah di-load test (misal menggunakan k6/JMeter) dan bottleneck teridentifikasi.'}
+    ],
+    checklist:[
+      'Sistem tidak kehilangan data meskipun satu service mati tiba-tiba (fault tolerance)',
+      'Memiliki strategi penanganan cache invalidation yang jelas',
+      'Container Docker dibangun menggunakan multi-stage build agar ukurannya kecil',
+      'Memiliki laporan hasil Load Test (sebelum dan sesudah optimasi)',
+      'Sudah dipresentasikan/direview oleh engineer lain atau AI dengan skor tinggi'
+    ],
+    quiz:[
+      {q:'Saat melakukan Load Testing, metrik apa yang paling penting untuk diperhatikan selain RPS (Requests Per Second)?', opts:['Jumlah baris kode','Warna dashboard monitoring','P99 Latency dan Error Rate','Ukuran database'], correct:2, explain:'RPS tinggi tidak berguna jika 5% user mendapatkan error atau request membutuhkan waktu 10 detik. P99 Latency menunjukkan batas waktu maksimum untuk 99% request tercepat.'},
+      {q:'Jika Service A memanggil Service B secara sinkron (HTTP) dan Service B mati, Service A akan ikut terhenti (Cascading Failure). Solusi terbaik untuk pola arsitektur ini adalah?', opts:['Restart Service A terus-menerus','Ubah komunikasi menjadi asinkron menggunakan Message Queue (Event-Driven), atau gunakan Circuit Breaker pattern jika komunikasi sinkron tetap diperlukan','Matikan server','Ganti bahasa pemrograman'], correct:1, explain:'Circuit breaker akan mencegah Service A terus-menerus menunggu Service B. Message queue memisahkan dependensi waktu (temporal decoupling).'},
+      {q:'Apa tujuan dari Docker Compose di project ini?', opts:['Mendeploy ke production','Menyatukan seluruh environment (App, DB, Redis, MQ) dalam satu konfigurasi deklaratif sehingga siapa pun bisa menjalankan project di laptop mereka dalam 1 menit','Mengecilkan ukuran image','Mengenkripsi data'], correct:1, explain:'Developer experience (DX) sangat penting. Tanpa docker-compose, setup project lokal butuh manual instalasi berbagai service yang memakan waktu berjam-jam.'},
+      {q:'Jika sistemmu kelebihan beban dan database mulai melambat, optimasi pertama yang paling murah (low-hanging fruit) biasanya adalah?', opts:['Sharding database ke 100 node','Menambahkan Caching layer (Redis/Memcached) untuk request yang sering dibaca','Menulis ulang menggunakan Rust','Mematikan beberapa fitur'], correct:1, explain:'Caching seringkali mengeliminasi 80-90% read queries ke database. Ini jauh lebih mudah dan aman daripada melakukan partisi/sharding database yang berisiko tinggi.'},
+      {q:'Apa indikator bahwa batas antar service (Service Boundaries) dalam arsitektur microservices-mu salah desain?', opts:['Kodenya terlalu pendek','Setiap kali merilis fitur baru, kamu selalu harus mengupdate 3 service yang berbeda secara bersamaan (Distributed Monolith)','Menggunakan bahasa pemrograman yang sama','Database terlalu kecil'], correct:1, explain:'Microservices seharusnya Independently Deployable. Jika kamu selalu harus deploy service A, B, dan C bersamaan, kamu sebenarnya memiliki monolith yang dikomunikasikan secara lambat lewat network.'}
+    ]
+  }
+  ],
+  4: [
+    {
+      id:'f4t01', title:'System Design Mastery',
+      why:'Di level ini, kamu diharapkan mendesain sistem kelas enterprise yang fault-tolerant dan highly scalable.',
+      resource:{type:'📖',name:'System Design Interview (Alex Xu)',url:'https://bytebytego.com/'},
+      subtopics:[
+        {t:'Geo-Distributed Systems', g:'Paham cara mereplikasi data antar benua dengan latensi rendah.'},
+        {t:'Consensus Algorithms (Raft, Paxos)', g:'Tahu bagaimana sistem terdistribusi mencapai kesepakatan state.'},
+        {t:'Database Internals (B-Tree vs LSM Tree)', g:'Mengerti cara kerja storage engine di bawah kap database.'},
+        {t:'High Scalability Architectures', g:'Mampu merancang sistem seperti Twitter, Netflix, atau sistem Payment.'},
+        {t:'Disaster Recovery', g:'Bisa membuat RPO dan RTO serta rencana pemulihan bencana.'}
+      ],
+      checklist:[
+        'Bisa menjelaskan algoritma Raft dan masalah split-brain',
+        'Paham kapan menggunakan B-Tree (RDBMS) vs LSM Tree (NoSQL)',
+        'Bisa merancang sistem dengan target 99.999% availability',
+        'Tahu cara melakukan cross-region replication',
+        'Bisa merancang skema disaster recovery untuk data center failover'
+      ],
+      quiz:[
+        {q:'Apa fungsi utama dari Consensus Algorithm seperti Raft di sistem terdistribusi?', opts:['Mempercepat query database','Mengamankan sistem dari hacker','Memastikan sekumpulan node setuju pada satu data/state yang sama meskipun ada node yang mati atau network partition','Membagi trafik ke banyak server'], correct:2, explain:'Raft digunakan dalam sistem seperti etcd (backend Kubernetes) untuk menjaga konfigurasi yang highly available dan konsisten, memilih Leader baru jika Leader lama mati.'},
+        {q:'Dalam arsitektur database, apa keunggulan utama LSM (Log-Structured Merge) Tree dibandingkan B-Tree tradisional?', opts:['Sangat cepat untuk random read','Sangat optimal untuk beban tulis (write-heavy workload) yang tinggi karena semua penulisan bersifat sekuensial ke memori/disk','Menggunakan memory yang sangat kecil','Mendukung SQL standar'], correct:1, explain:'LSM Tree (dipakai Cassandra, RocksDB) mengkonversi random writes menjadi sequential writes, sangat cepat untuk ingesting big data. B-Tree lebih baik untuk read-heavy.'},
+        {q:'Dalam konteks Disaster Recovery, apa itu RPO (Recovery Point Objective)?', opts:['Waktu maksimum yang diizinkan untuk sistem mati','Jumlah server cadangan','Toleransi maksimum kehilangan data (misal: "Kita bisa mentolerir kehilangan data transaksi 5 menit terakhir")','Biaya pemulihan'], correct:2, explain:'RPO adalah seberapa banyak data yang "boleh" hilang (dalam ukuran waktu), menentukan strategi backup. RTO (Recovery Time Objective) adalah seberapa cepat sistem harus hidup kembali.'},
+        {q:'Dalam desain sistem geo-distributed, apa masalah utama dengan Synchronous Replication antar benua (misal: US ke Asia)?', opts:['Data tidak bisa disinkronkan','Latensi write menjadi sangat tinggi karena harus menunggu acknowledgment dari benua seberang (puluhan hingga ratusan milidetik)','Tidak didukung oleh cloud provider','Mengurangi throughput CPU'], correct:1, explain:'Kecepatan cahaya membatasi latensi. Sync replication antar benua akan membuat setiap transaksi terasa sangat lambat. Biasanya cross-region menggunakan Asynchronous replication.'},
+        {q:'Apa itu Split-Brain problem?', opts:['Aplikasi monolith yang dibagi menjadi microservices','Dua bagian dari cluster terputus jaringannya, dan masing-masing mengira dirinya Leader yang berhak menerima write, merusak konsistensi data','AI yang salah memprediksi','Database yang di-shard menjadi terlalu banyak'], correct:1, explain:'Ini dicegah dengan sistem Quorum (butuh N/2 + 1 node untuk mengambil keputusan). Jadi jika cluster terbelah dua, partisi yang memiliki minoritas node tidak bisa bertindak sebagai Leader.'}
+      ]
+    },
+    {
+      id:'f4t02', title:'Technical Leadership & Impact',
+      why:'Staff engineer bukan sekadar coder hebat, tapi force multiplier yang meningkatkan standar tim.',
+      resource:{type:'📖',name:'Staff Engineer (Will Larson)',url:'https://staffeng.com/book'},
+      subtopics:[
+        {t:'Writing RFC / Design Docs', g:'Bisa menyusun dokumen teknis untuk mendapatkan buy-in dari stakeholder.'},
+        {t:'Mentoring & Sponsoring', g:'Bisa meningkatkan level teknis engineer lain (Senior/Junior).'},
+        {t:'Leading Incidents', g:'Paham cara menjadi Incident Commander saat sistem down.'},
+        {t:'Code Review Culture', g:'Membentuk budaya review yang edukatif dan tidak toxic.'},
+        {t:'Aligning Tech with Business', g:'Bisa menerjemahkan prioritas bisnis menjadi technical roadmaps.'}
+      ],
+      checklist:[
+        'Terbiasa mempublikasikan RFC/Design Document sebelum menulis kode kompleks',
+        'Berhasil me-mentor minimal 1 engineer untuk naik level/promosi',
+        'Pernah memimpin penanganan incident P1 dan menulis post-mortem blameless',
+        'Mengutamakan dampak bisnis (business value) daripada sekadar teknologi keren',
+        'Mampu menavigasi politik kantor dan stakeholder management'
+      ],
+      quiz:[
+        {q:'Apa karakteristik dari "Blameless Post-Mortem"?', opts:['Mencari siapa engineer yang menulis bug tersebut agar bisa dihukum','Menyalahkan pihak ketiga / vendor','Fokus pada MENGAPA sistem mengizinkan kesalahan itu terjadi, bukan SIAPA yang melakukannya, untuk mencegahnya terulang','Menghapus log error'], correct:2, explain:'Blameless culture mendorong engineer jujur saat terjadi kesalahan. Manusia pasti berbuat salah; sistem yang baik harus memiliki pagar pengaman (guardrails).'},
+        {q:'Mengapa menulis RFC (Request For Comments) atau Design Doc penting sebelum mulai ngoding fitur besar?', opts:['Untuk memperlambat development','Untuk dokumentasi legal','Mengumpulkan feedback, mengungkap blind spots, dan mendapatkan kesepakatan (alignment) tim sebelum menghabiskan berminggu-minggu menulis kode','Memenuhi syarat dari HR'], correct:2, explain:'Di level senior/staff, coding adalah bagian tergampang. Memastikan "kita membangun hal yang benar dengan pendekatan yang tepat" jauh lebih berharga.'},
+        {q:'Menurut Will Larson, apa itu "Sponsorship" vs "Mentorship"?', opts:['Sponsorship adalah membiayai sekolah mereka','Sponsorship adalah menempatkan nama seseorang di proyek visibilitas tinggi dan mempertaruhkan reputasimu untuk mereka; Mentorship sekadar memberi nasihat','Mentorship lebih penting dari Sponsorship','Keduanya hal yang persis sama'], correct:1, explain:'Sponsorship sangat penting untuk promosi ke level Staff/Principal. Kamu membutuhkan orang yang menyebut namamu di ruangan saat keputusan promosi dibuat.'},
+        {q:'Sebagai Incident Commander saat server mati, apa peran utamamu?', opts:['Langsung login ke server dan memperbaiki bug','Menyalahkan tim QA','Mengkoordinasi komunikasi, mendelegasikan investigasi ke responder, menjaga ketenangan, dan update stakeholder','Bersembunyi sampai masalah selesai'], correct:2, explain:'IC (Incident Commander) seharusnya tidak melakukan hands-on keyboard. Fokusnya adalah mengelola krisis, agar resolver bisa fokus memperbaiki tanpa gangguan dari manajemen.'},
+        {q:'"Force Multiplier" berarti...', opts:['Bekerja lembur setiap hari','Tindakan dan keputusanmu membuat produktivitas dan kualitas seluruh tim naik, bukan hanya output kodemu sendiri','Memaksa orang lain bekerja lebih keras','Menulis semua kode sendirian'], correct:1, explain:'Staff engineer dinilai bukan dari jumlah baris kodenya, tapi seberapa banyak dia memberdayakan tim (lewat tooling, arsitektur, mentoring, dll).'}
+      ]
+    },
+    {
+id:'f4gate', title:'🏗️ Capstone Project: Open Source & Community Impact',
+    why:'Level Expert dinilai dari impact ke komunitas yang lebih luas, bukan hanya project internal.',
+    resource:{type:'📝',name:'Project Guidelines',url:'#'},
+    subtopics:[
+      {t:'Open Source Contribution', g:'Minimal 2 PR di-merge ke repository open source yang aktif digunakan.'},
+      {t:'Technical Writing', g:'Menulis minimal 2 artikel teknis mendalam (in-depth) di blog/platform publik.'},
+      {t:'Knowledge Sharing', g:'Menjadi pembicara di meetup, atau mengadakan sesi tech talk internal.'},
+      {t:'System Design RFC', g:'Menyusun RFC untuk sistem berskala besar dan mendapatkan review dari peer.'},
+      {t:'Mentorship', g:'Secara aktif mementori developer junior/mid-level selama minimal 3 bulan.'}
+    ],
+    checklist:[
+      'Berhasil berkontribusi kode bermakna (bukan sekadar typo fix) ke OSS',
+      'Artikel teknis yang ditulis mendapatkan feedback positif dari pembaca',
+      'Mendapat feedback bahwa sesi tech talk yang dibawakan mudah dipahami dan aplikatif',
+      'RFC yang dibuat mencakup pertimbangan trade-offs dan alternatif desain',
+      'Mentee menunjukkan peningkatan performa dan kemandirian'
+    ],
+    quiz:[
+      {q:'Mengapa kontribusi Open Source sangat dihargai di level Staff/Expert?', opts:['Karena gratis','Membuktikan kemampuan berkolaborasi dalam codebase raksasa peninggalan orang lain, menavigasi review yang ketat, dan berkomunikasi efektif secara asinkron','Karena bisa mendapat kaos gratis','Untuk menghindari pekerjaan kantor'], correct:1, explain:'Di level tinggi, kemampuan soft-skills (komunikasi, persuasif, menerima kritik) di ekosistem asinkron sama pentingnya dengan kemampuan hard-skills (coding).'},
+      {q:'Saat menulis RFC (Request For Comments) atau Design Doc, apa bagian terpenting yang sering dilewatkan engineer junior?', opts:['Panjang halaman dokumen','Warna font','Bagian "Alternatif yang Dipertimbangkan" (Alternatives Considered) beserta alasan mengapa opsi tersebut tidak dipilih','Jumlah diagram'], correct:2, explain:'Keputusan arsitektur selalu tentang Trade-Off. Menjelaskan mengapa teknologi X TIDAK dipakai seringkali lebih mencerahkan daripada menjelaskan mengapa teknologi Y dipakai.'},
+      {q:'Karakteristik tulisan teknis (Technical Writing) yang baik adalah...', opts:['Menggunakan banyak jargon kompleks agar terlihat pintar','Mampu menjelaskan konsep kompleks dengan analogi sederhana dan memiliki struktur logis yang mudah diikuti pembaca','Ditulis dalam satu paragraf panjang','Tidak menyertakan kode'], correct:1, explain:'Sama seperti kode, tulisan ditulis untuk dibaca manusia. Clarity (kejelasan) adalah metrik utama dari tulisan teknis yang berkualitas.'},
+      {q:'Apa tanda bahwa sesi Mentoring berjalan sukses?', opts:['Mentee mengkopi semua gaya kodemu','Mentee tidak pernah bertanya lagi','Mentee menjadi lebih mandiri dalam menyelesaikan masalah, mampu membuat keputusan desain sendiri, dan bahkan mulai mengajarkan ilmunya ke orang lain','Mentee selalu setuju denganmu'], correct:2, explain:'Tujuan mentoring bukan menciptakan klon dirimu, tapi memberdayakan orang lain agar mereka bisa melampaui kemampuanmu di masa depan.'},
+      {q:'Di level kepemimpinan teknis (Tech Lead/Staff), metrik utama keberhasilanmu berubah dari "Berapa banyak fitur yang saya selesaikan" menjadi...', opts:['Berapa banyak rapat yang saya hadiri','Berapa banyak baris kode yang saya tulis','"Berapa banyak impact positif yang saya ciptakan melalui tim, dan seberapa banyak halangan tim yang berhasil saya singkirkan" (Force Multiplier)','Berapa banyak orang yang saya pecat'], correct:2, explain:'Kepemimpinan teknis adalah tentang meningkatkan throughput dan kualitas keseluruhan tim. Keberhasilanmu diukur dari keberhasilan orang-orang di sekitarmu.'}
+    ]
+  }
+
   ]
+
 };
 
 // Metrics per phase
@@ -1206,6 +2171,55 @@ const METRICS = {
 };
 
 // ════════════════════════════════════════════════════
+//  AI PROMPT TEMPLATES
+// ════════════════════════════════════════════════════
+const PROMPTS = {
+  preStudy: (topic) => `Saya akan belajar "${topic.title}".
+Background: saya self-taught.
+
+Subtopics yang perlu saya pahami:
+${topic.subtopics.map((s,i) => `${i+1}. ${s.t} — Target: ${s.g}`).join('\n')}
+
+Tolong berikan:
+1. Mental model inti (analogi sederhana)
+2. 3 konsep yang HARUS saya pahami (prioritas tinggi)
+3. 1 misconception paling umum yang harus saya hindari
+4. Estimasi waktu realistis untuk paham dasar dan bisa praktek
+
+Jangan overwhelm saya dengan detail — saya butuh roadmap yang actionable.`,
+
+  codeReview: (topic) => `Review code saya untuk "${topic.title}". Saya self-taught, perlu feedback brutal dan honest.
+
+CODE:
+[paste code kamu di sini]
+
+CONTEXT:
+- Goal: [apa yang ingin dicapai]
+- Approach: [kenapa pilih approach ini]
+
+FEEDBACK YANG SAYA BUTUHKAN:
+1. Apakah code ini show pemahaman konsep inti, atau hanya cargo cult programming?
+2. Bug/edge case yang saya miss (sebutkan 2-3 yang paling critical)
+3. Bad habit yang akan jadi masalah nanti (anti-pattern)
+4. Score 1-10 untuk: (a) correctness, (b) pemahaman konsep, (c) code quality
+5. Haruskah saya repeat practice atau bisa lanjut?
+
+IMPORTANT: Jangan sugarcoat.`,
+
+  socratic: (topic) => `Socratic grilling session. Saya klaim sudah paham "${topic.title}".
+
+Rules:
+1. Tanya saya 5 pertanyaan, dari basic ke edge case
+2. Tunggu saya jawab sebelum reveal answer yang benar
+3. Setelah 5 pertanyaan, kasih verdict: LULUS (bisa lanjut) atau REPEAT (praktek lagi)
+4. Jika REPEAT, sebutkan gap pemahaman yang paling krusial
+
+Jangan kasih clue atau hint. Saya harus bisa jawab dari pemahaman saya sendiri.
+
+Ready. Pertanyaan pertama?`
+};
+
+// ════════════════════════════════════════════════════
 //  STATE
 // ════════════════════════════════════════════════════
 let ST = JSON.parse(localStorage.getItem('rmv2_state') || '{}');
@@ -1222,10 +2236,17 @@ function setTopicState(id, s) { ST[id] = s; save(); }
 //  LOCK LOGIC
 // ════════════════════════════════════════════════════
 function isUnlocked(phase, idx) {
-  if (idx === 0) return true; // first topic always unlocked
+  // Topik pertama Fase 1 selalu terbuka
+  if (phase === 1 && idx === 0) return true;
+  // Topik pertama fase lain: cek apakah SEMUA topik fase sebelumnya sudah lulus
+  if (idx === 0) {
+    const prevPhase = phase - 1;
+    if (!TOPICS[prevPhase] || TOPICS[prevPhase].length === 0) return true;
+    return TOPICS[prevPhase].every(t => getTopicState(t.id).passed === true);
+  }
+  // Topik non-pertama: cek topik sebelumnya di fase yang sama
   const prevTopic = TOPICS[phase][idx - 1];
-  const prevState = getTopicState(prevTopic.id);
-  return prevState.passed === true;
+  return getTopicState(prevTopic.id).passed === true;
 }
 
 // ════════════════════════════════════════════════════
@@ -1237,7 +2258,7 @@ function getClPct(topicId, totalItems) {
 }
 
 function getQuizPassed(s) {
-  return s.quizSubmitted && s.quizScore >= 67;
+  return s.quizSubmitted && s.quizScore >= 80;
 }
 
 function isTopicPassed(id) {
@@ -1249,7 +2270,7 @@ function isTopicPassed(id) {
 }
 
 function findTopic(id) {
-  for (const ph of [1, 2]) {
+  for (const ph of Object.keys(TOPICS).map(Number)) {
     const t = TOPICS[ph].find(t => t.id === id);
     if (t) return t;
   }
@@ -1260,7 +2281,7 @@ function findTopic(id) {
 //  RENDER TOPICS
 // ════════════════════════════════════════════════════
 function renderAll() {
-  [1, 2].forEach(ph => {
+  Object.keys(TOPICS).map(Number).forEach(ph => {
     const container = document.getElementById(`tl-${ph}`);
     if (!container) return;
     container.innerHTML = '';
@@ -1283,7 +2304,9 @@ function buildTopicCard(topic, phase, idx) {
   card.className = `tc ${unlocked ? 'unlocked' : 'locked'} ${statusClass}`;
   card.id = `tc-${topic.id}`;
 
+  const isReviewDue = passed && s.passedAt && (Date.now() - s.passedAt > 14 * 24 * 60 * 60 * 1000);
   const statusIcon = passed ? '✓' : (unlocked ? (idx + 1) : '🔒');
+  const reviewBadge = isReviewDue ? '<div class="tc-score-badge" style="background:var(--warn);color:#000;border:none">🔄 Review Due</div>' : '';
   const scoreBadge = s.quizSubmitted ? `<div class="tc-score-badge">${s.quizScore}%</div>` : '';
 
   let subtopicsHTML = topic.subtopics.map(sub => `
@@ -1314,6 +2337,7 @@ function buildTopicCard(topic, phase, idx) {
         <div class="tc-why">${topic.why}</div>
       </div>
       <div class="tc-right">
+        ${reviewBadge}
         ${scoreBadge}
         ${!unlocked ? '<div class="tc-lock-icon">🔒</div>' : ''}
         <div class="tc-chevron">▼</div>
@@ -1323,6 +2347,18 @@ function buildTopicCard(topic, phase, idx) {
       <div class="subtopics">
         <div class="sec" style="margin-bottom:10px">Sub-Topic & Learning Target</div>
         ${subtopicsHTML}
+      </div>
+
+      ${topic.resource ? `<div class="resource-link">📌 Recommended: <a href="${topic.resource.url}" target="_blank" rel="noopener">${topic.resource.type} ${topic.resource.name} ↗</a></div>` : ''}
+
+      <div class="prompt-center">
+        <div class="sec" style="margin-bottom:10px">🤖 AI Prompt Center — klik untuk salin</div>
+        <div class="prompt-buttons">
+          <button class="prompt-btn" onclick="copyPrompt('preStudy','${topic.id}')">📚 Pre-Study Prompt</button>
+          <button class="prompt-btn" onclick="copyPrompt('codeReview','${topic.id}')">🔍 Code Review Prompt</button>
+          <button class="prompt-btn" onclick="copyPrompt('socratic','${topic.id}')">🎯 Socratic Grilling Prompt</button>
+          ${isReviewDue ? `<button class="prompt-btn" style="border-color:var(--warn);color:var(--warn)" onclick="markReviewed('${topic.id}', event)">✅ Mark as Reviewed</button>` : ''}
+        </div>
       </div>
 
       <div class="checklist-wrap">
@@ -1379,7 +2415,7 @@ function buildQuizHTML(topic, s, unlocked) {
     const correct = topic.quiz.filter((q, qi) => s.quizAnswers[qi] === q.correct).length;
     const pct = Math.round(correct / topic.quiz.length * 100);
     const passCls = passed ? 'pass' : 'fail';
-    const msg = passed ? '✓ Quiz lulus! Checklist kamu juga sudah ≥80%? Topic ini unlock!' : '✗ Belum lulus. Score minimum 67%. Pelajari ulang subtopics, lalu retry.';
+    const msg = passed ? '✓ Quiz lulus! Checklist kamu juga sudah ≥80%? Topic ini unlock!' : '✗ Belum lulus. Score minimum 80%. Pelajari ulang subtopics, lalu retry.';
     resultHTML = `<div class="quiz-result show ${passCls}">
       <span class="qr-score">${pct}%</span>
       <div class="qr-msg">${correct}/${topic.quiz.length} benar &mdash; ${msg}</div>
@@ -1387,7 +2423,7 @@ function buildQuizHTML(topic, s, unlocked) {
   }
 
   const gateBanner = !s.quizSubmitted ? '' :
-    (!passed ? `<div class="gate-banner show">🔒 Topic berikutnya tetap terkunci sampai kamu lulus quiz ini (≥67%) DAN checklist ≥80%.</div>` :
+    (!passed ? `<div class="gate-banner show">🔒 Topic berikutnya tetap terkunci sampai kamu lulus quiz ini (≥80%) DAN checklist ≥80%.</div>` :
     !isTopicPassed(topic.id) ? `<div class="gate-banner show">🔒 Quiz lulus, tapi checklist baru ${getClPct(topic.id, findTopic(topic.id)?.checklist.length||0)}%. Butuh ≥80% untuk unlock topic berikutnya.</div>` :
     `<div class="pass-banner show">🚀 Selesai! Topic berikutnya sudah terbuka.</div>`);
 
@@ -1398,7 +2434,7 @@ function buildQuizHTML(topic, s, unlocked) {
 
   return `<div class="quiz-wrap">
     <div class="quiz-header">
-      <div class="quiz-title">📝 QUIZ — Min. 2/3 benar (67%) untuk lulus</div>
+      <div class="quiz-title">📝 QUIZ — Min. 80% benar untuk lulus</div>
       <div class="quiz-count">${topic.quiz.length} soal</div>
     </div>
     ${qItems}
@@ -1406,7 +2442,7 @@ function buildQuizHTML(topic, s, unlocked) {
     <div class="submit-area">
       ${submitBtn}
       ${retryBtn}
-      <span class="pass-req">Minimum: ≥67% quiz + ≥80% checklist → unlock next topic</span>
+      <span class="pass-req">Minimum: ≥80% quiz + ≥80% checklist → unlock next topic</span>
     </div>
     ${gateBanner}
   </div>`;
@@ -1476,7 +2512,14 @@ function submitQuiz(topicId) {
   const correct = topic.quiz.filter((q, qi) => s.quizAnswers[qi] === q.correct).length;
   s.quizScore = Math.round(correct / topic.quiz.length * 100);
   s.quizSubmitted = true;
-  s.passed = isTopicPassed(topicId) || (s.quizScore >= 67 && getClPct(topicId, topic.checklist.length) >= 80);
+  
+  const wasPassed = s.passed;
+  s.passed = isTopicPassed(topicId) || (s.quizScore >= 80 && getClPct(topicId, topic.checklist.length) >= 80);
+  
+  if (!wasPassed && s.passed && !s.passedAt) {
+    s.passedAt = Date.now();
+  }
+
   setTopicState(topicId, s);
 
   // Rebuild card fully
@@ -1484,7 +2527,7 @@ function submitQuiz(topicId) {
   updateStats();
 
   if (s.passed) showToast('✓ Topic lulus! Topic berikutnya terbuka.', false);
-  else if (s.quizScore < 67) showToast('Belum lulus quiz. Retry setelah belajar ulang.', true);
+  else if (s.quizScore < 80) showToast('Belum lulus quiz. Retry setelah belajar ulang.', true);
   else showToast('Quiz lulus, tapi checklist belum ≥80%.', true);
 }
 
@@ -1507,16 +2550,26 @@ function checkPassUpdate(topicId) {
   const newPassed = clPct >= 80 && getQuizPassed(s);
   if (newPassed !== s.passed) {
     s.passed = newPassed;
+    if (newPassed && !s.passedAt) s.passedAt = Date.now();
     setTopicState(topicId, s);
     rebuildCard(topicId);
   }
+}
+
+function markReviewed(topicId, event) {
+  event.stopPropagation();
+  const s = getTopicState(topicId);
+  s.passedAt = Date.now();
+  setTopicState(topicId, s);
+  rebuildCard(topicId);
+  showToast('✓ Review recorded! Timer reset to 14 days.', false);
 }
 
 function rebuildCard(topicId) {
   const topic = findTopic(topicId);
   if (!topic) return;
   let phase = 1, idx = 0;
-  for (const ph of [1, 2]) {
+  for (const ph of Object.keys(TOPICS).map(Number)) {
     const i = TOPICS[ph].findIndex(t => t.id === topicId);
     if (i !== -1) { phase = ph; idx = i; break; }
   }
@@ -1533,6 +2586,17 @@ function rebuildCard(topicId) {
     if (nextOld) {
       const nextNew = buildTopicCard(nextTopic, phase, idx + 1);
       nextOld.replaceWith(nextNew);
+    }
+  }
+  // If last topic in phase, rebuild first topic of next phase to unlock it
+  if (!nextTopic) {
+    const nextPhase = phase + 1;
+    if (TOPICS[nextPhase] && TOPICS[nextPhase][0]) {
+      const nfOld = document.getElementById(`tc-${TOPICS[nextPhase][0].id}`);
+      if (nfOld) {
+        const nfNew = buildTopicCard(TOPICS[nextPhase][0], nextPhase, 0);
+        nfOld.replaceWith(nfNew);
+      }
     }
   }
 }
@@ -1571,7 +2635,7 @@ function toggleMet(id, el) {
 function updateStats() {
   let totalTopics = 0, passedTopics = 0, totalScore = 0, scoreCount = 0;
 
-  [1, 2].forEach(ph => {
+  Object.keys(TOPICS).map(Number).forEach(ph => {
     TOPICS[ph].forEach(topic => {
       totalTopics++;
       const s = getTopicState(topic.id);
@@ -1580,7 +2644,6 @@ function updateStats() {
     });
   });
 
-  // Include phase 3&4 as non-assessed (count metrics only for phase)
   const total = totalTopics;
   const pct = total > 0 ? Math.round(passedTopics / total * 100) : 0;
 
@@ -1591,10 +2654,10 @@ function updateStats() {
   document.getElementById('opFill').style.width = pct + '%';
 
   // Phase pcts
-  [1, 2].forEach(ph => {
+  Object.keys(TOPICS).map(Number).forEach(ph => {
     const topics = TOPICS[ph];
     const passed = topics.filter(t => getTopicState(t.id).passed).length;
-    const p = Math.round(passed / topics.length * 100);
+    const p = topics.length > 0 ? Math.round(passed / topics.length * 100) : 0;
     const el = document.getElementById(`pp${ph}`);
     const of = document.getElementById(`of${ph}`);
     const op = document.getElementById(`op${ph}`);
@@ -1633,6 +2696,52 @@ function showToast(msg, fail) {
 window.addEventListener('scroll', () => {
   document.getElementById('sTop').classList.toggle('vis', window.scrollY > 400);
 });
+
+// ════════════════════════════════════════════════════
+//  UTILITY: Copy Prompt, Export, Import
+// ════════════════════════════════════════════════════
+function copyPrompt(type, topicId) {
+  const topic = findTopic(topicId);
+  if (!topic) return;
+  let text = '';
+  if (type === 'preStudy') text = PROMPTS.preStudy(topic);
+  else if (type === 'codeReview') text = PROMPTS.codeReview(topic);
+  else if (type === 'socratic') text = PROMPTS.socratic(topic);
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('✓ Prompt disalin ke clipboard!', false);
+  }).catch(() => {
+    showToast('✗ Gagal salin. Coba manual.', true);
+  });
+}
+
+function exportProgress() {
+  const data = JSON.stringify(ST, null, 2);
+  const blob = new Blob([data], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `roadmap-progress-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('✓ Progress exported!', false);
+}
+
+function importProgress(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      ST = JSON.parse(e.target.result);
+      save();
+      renderAll();
+      showToast('✓ Progress imported!', false);
+    } catch (err) {
+      showToast('✗ File format invalid.', true);
+    }
+  };
+  reader.readAsText(file);
+}
 
 // ════════════════════════════════════════════════════
 //  INIT
